@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const userRoutes = require("./routes/userRoutes")
-// const { errorHandler } = require("./middlewares/errorHandler")
+const { errorHandler } = require("./middlewares/errorHandler")
 
 const app = express()
 require("dotenv").config();
@@ -11,7 +11,7 @@ app.use(bodyParser.json({limit: "100mb"}))
 app.use(bodyParser.urlencoded({ extended: true, limit: "100mb"}))
 app.use(cors({ origin: "*" }))
 app.use("/users", userRoutes)
-// app.use(errorHandler)
+app.use(errorHandler)
 
 
 const port = 5353
