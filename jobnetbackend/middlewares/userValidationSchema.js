@@ -12,10 +12,10 @@ const userValidationSchema = yup.object().shape({
             .email("Email is required"),
     password: yup
                 .string("Password must be a string")
-                .min(6, "Password is too short")
+                .min(8, "Password is too short")
                 .max(50, "Password is too short")
                 .required("Password is required")
-                .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/, "Password should contain at least an Upper case, number and a special characters"),
+                .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/, "Password should contain at least an Upper case, number and a special character"),
 })
 
 const employerValidationSchema = yup.object().shape({
@@ -33,7 +33,7 @@ const employerValidationSchema = yup.object().shape({
                 .min(8, "Password is too short")
                 .max(50, "Password is too short")
                 .required("Password is required")
-                .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/, "Password should contain at least an Upper case, number and a special characters"),
+                .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/, "Password should contain at least an Upper case, number and a special character"),
 })
 
 module.exports = {userValidationSchema, employerValidationSchema}
