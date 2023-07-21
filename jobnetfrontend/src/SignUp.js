@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
@@ -6,24 +6,30 @@ import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
     const navigate = useNavigate()
+    const [confirmPassword, setconfirmPassword] = useState("")
     const onSubmit = (values, errors) => {
-        const uri = "http://localhost:5353/users/registerAsEmployer"
-        axios.post(uri, values).then((res)=>{
-            console.log(res);
-            alert(res.data.message)
-            // navigate("/signIn")
-        }).catch((err)=>{
-            console.log(err);
-            alert(err.response.data.message)
-        })
+        if (values.password !== values.confirmPassword) {
+            alert("Password does not matched")
+            return
+        } else {
+            const uri = "http://localhost:5353/users/registerAsEmployer"
+            axios.post(uri, values).then((res)=>{
+                console.log(res);
+                alert(res.data.message)
+                // navigate("/signIn")
+            }).catch((err)=>{
+                console.log(err);
+                alert(err.response.data.message)
+            })            
+        }
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
         initialValues: {
             employerName: "",
             email: "",
-            password: ""
-            // confirmPassword: ""
+            password: "",
+            confirmPassword: ""
         },
         validationSchema: yup.object().shape({
             employerName: yup.string()
@@ -33,9 +39,9 @@ function SignUp() {
                 .email()
                 .required("This input cannot be empty"),
             password: yup.string().required("This input cannot be empty")
+                .min(8, "should be at least 8 characters"),
+            confirmPassword: yup.string().required("This input cannot be empty")
                 .min(8, "should be at least 8 characters")
-            // confirmPassword: yup.string().required("This input cannot be empty")
-            //     .min(8, "should be at least 8 characters")
         }),
         onSubmit
     })
@@ -64,12 +70,12 @@ function SignUp() {
                                 <small className='text-danger fw-bold'>{errors.password}</small>
                             }
                         </div>
-                        {/* <div className='my-3'>
-                            <input type="password" onBlur={handleBlur} value={values.confirmPassword} onChange={handleChange} placeholder='Confirm Password' name="confirmPassword" id="" className='form-control' />
+                        <div className='my-3'>
+                            <input type="password" onBlur={handleBlur} value={values.confirmPassword} onChange={handleChange} placeholder='Confirm Password' name="confirmPassword" className='form-control' />
                             {touched.confirmPassword && errors.confirmPassword &&
                                 <small className='text-danger fw-bold'>{errors.confirmPassword}</small>
                             }
-                        </div> */}
+                        </div>
                         <div className='d-flex'>
                             <div>
                                 <input className='check-box' type="checkbox" name="" id="" />
