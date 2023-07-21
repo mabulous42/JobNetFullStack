@@ -33,13 +33,17 @@ function SignUp() {
         },
         validationSchema: yup.object().shape({
             employerName: yup.string()
-                .required("This input cannot be empty")
-                .min(5, "cannot be less than 5 characters"),
+                .string("Employer name must be a string")
+                .min(2, "Employer name is too short")
+                .max(50, "Employer name is too long")
+                .required("Employer name cannot be empty")
+                .matches(/^[a-zA-Z0-9]+$/, "Employer Name should not contain special characters"),
             email: yup.string()
                 .email()
                 .required("This input cannot be empty"),
             password: yup.string().required("This input cannot be empty")
-                .min(8, "should be at least 8 characters"),
+                .min(8, "should be at least 8 characters")
+                .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,}$/, "Password should contain at least an Upper case, number and a special character"),
             confirmPassword: yup.string().required("This input cannot be empty")
                 .min(8, "should be at least 8 characters")
         }),
