@@ -34,3 +34,7 @@ code {
 .terms{
   line-height: 18px;
 }
+
+.job-seeker{
+  cursor: pointer;
+}
