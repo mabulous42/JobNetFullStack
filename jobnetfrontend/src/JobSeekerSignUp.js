@@ -3,8 +3,9 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import SpinnerLoader from './SpinnerLoader'
 
-function JobSeekerSignUp({registerAsJobSeeker, setisLoading}) {
+function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
         setisLoading(true)
@@ -62,7 +63,7 @@ function JobSeekerSignUp({registerAsJobSeeker, setisLoading}) {
 
     return (
         <>
-            <div>
+            <div className='position-relative'>
                 <form action="" onSubmit={handleSubmit}>
                     <h4 className='text-center py-2'>Register as a Job Seeker</h4>
                     <div className='my-3'>
@@ -99,9 +100,12 @@ function JobSeekerSignUp({registerAsJobSeeker, setisLoading}) {
                         <button disabled={!isCheckboxChecked} type="submit" className='btn btn-primary'>Create Account</button>
                     </div>
                     <div>
-                        <small>To register as an Employer, <span onClick={registerAsJobSeeker} className='text-success job-seeker'>Click here</span></small>
+                        <small>To register as an Employer, <span onClick={registerAsEmployer} className='text-success job-seeker'>Click here</span></small>
                     </div>
                 </form>
+                <div className='position-absolute small-loader w-100'>
+                    {!isSpinning ? <SpinnerLoader /> : null}
+                </div>
             </div>
         </>
     )

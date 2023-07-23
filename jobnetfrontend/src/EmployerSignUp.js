@@ -4,8 +4,9 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { isDisabled } from '@testing-library/user-event/dist/utils'
+import SpinnerLoader from './SpinnerLoader'
 
-function EmployerSignUp({ registerAsJobSeeker, setisLoading }) {
+function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
         setisLoading(true)
@@ -19,14 +20,14 @@ function EmployerSignUp({ registerAsJobSeeker, setisLoading }) {
             } else {
                 const uri = "http://localhost:5353/users/registerAsEmployer"
                 axios.post(uri, values).then((res) => {
-                    console.log(res);                    
+                    console.log(res);
                     alert(res.data.message)
                     // navigate("/signIn")
                 }).catch((err) => {
                     console.log(err);
                     alert(err.response.data.message)
                 })
-            }            
+            }
         }, 2000);
     }
 
@@ -60,6 +61,7 @@ function EmployerSignUp({ registerAsJobSeeker, setisLoading }) {
     const handleCheckboxChange = (event) => {
         setIsCheckboxChecked(event.target.checked);
     };
+
 
     return (
         <>
@@ -103,6 +105,9 @@ function EmployerSignUp({ registerAsJobSeeker, setisLoading }) {
                         <small>To register as a Job Seeker, <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>
                     </div>
                 </form>
+                <div className='position-absolute small-loader w-100'>
+                    {isSpinning ? <SpinnerLoader /> : null}
+                </div>
             </div>
         </>
     )

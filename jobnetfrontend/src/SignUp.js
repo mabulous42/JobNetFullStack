@@ -7,21 +7,37 @@ function SignUp() {
 
     const [isVisible, setisVisible] = useState(true)
     const [isLoading, setisLoading] = useState(false)
+    const [isSpinning, setisSpinning] = useState(false)
 
     const registerAsJobSeeker = () => {
-        setisVisible(!isVisible)
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisVisible(!isVisible)
+            setisSpinning(!isSpinning)
+        }, 1500);
     }
 
-    console.log(isLoading);
+    const registerAsEmployer = () => {
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisVisible(!isVisible)
+            setisSpinning(!isSpinning)
+        }, 1500);
+    }
 
     return (
         <>
-
             <div className='body d-flex align-items-center justify-content-center'>
                 <div className='shadow rounded p-4 signup-box'>
                     {/* <button onClick={showOrHide} className='btn btn-primary'>Show Element</button> */}
-                    {isVisible ? <EmployerSignUp registerAsJobSeeker={registerAsJobSeeker} setisLoading={setisLoading} /> 
-                    : <JobSeekerSignUp registerAsJobSeeker={registerAsJobSeeker} setisLoading={setisLoading} />}
+                    {isVisible ? <EmployerSignUp registerAsJobSeeker={registerAsJobSeeker} 
+                    setisLoading={setisLoading} 
+                    isSpinning={isSpinning}
+                    /> 
+                    : <JobSeekerSignUp registerAsEmployer={registerAsEmployer} 
+                    setisLoading={setisLoading} 
+                    isSpinning={isSpinning}
+                    />}
                 </div>
             </div>
             {
