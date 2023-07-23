@@ -5,23 +5,29 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { isDisabled } from '@testing-library/user-event/dist/utils'
 
-function EmployerSignUp({ registerAsJobSeeker }) {
+function EmployerSignUp({ registerAsJobSeeker, setisLoading }) {
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
-        if (values.password !== values.confirmPassword) {
-            alert("Password does not matched")
-            return
-        } else {
-            const uri = "http://localhost:5353/users/registerAsEmployer"
-            axios.post(uri, values).then((res) => {
-                console.log(res);
-                alert(res.data.message)
-                // navigate("/signIn")
-            }).catch((err) => {
-                console.log(err);
-                alert(err.response.data.message)
-            })
-        }
+        setisLoading(true)
+        setTimeout(() => {
+            setisLoading(false)
+        }, 1990);
+        setTimeout(() => {
+            if (values.password !== values.confirmPassword) {
+                alert("Password does not matched")
+                return
+            } else {
+                const uri = "http://localhost:5353/users/registerAsEmployer"
+                axios.post(uri, values).then((res) => {
+                    console.log(res);                    
+                    alert(res.data.message)
+                    // navigate("/signIn")
+                }).catch((err) => {
+                    console.log(err);
+                    alert(err.response.data.message)
+                })
+            }            
+        }, 2000);
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
@@ -54,9 +60,10 @@ function EmployerSignUp({ registerAsJobSeeker }) {
     const handleCheckboxChange = (event) => {
         setIsCheckboxChecked(event.target.checked);
     };
+
     return (
         <>
-            <div>
+            <div className='position-relative'>
                 <form action="" onSubmit={handleSubmit}>
                     <h4 className='text-center py-2'>Register as an Employer</h4>
                     <div className='my-3'>

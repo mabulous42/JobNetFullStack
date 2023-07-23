@@ -4,23 +4,29 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-function JobSeekerSignUp({registerAsJobSeeker}) {
+function JobSeekerSignUp({registerAsJobSeeker, setisLoading}) {
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
-        if (values.password !== values.confirmPassword) {
-            alert("Password does not matched")
-            return
-        } else {
-            const uri = "http://localhost:5353/users/registerAsUser"
-            axios.post(uri, values).then((res) => {
-                console.log(res);
-                alert(res.data.message)
-                // navigate("/signIn")
-            }).catch((err) => {
-                console.log(err);
-                alert(err.response.data.message)
-            })
-        }
+        setisLoading(true)
+        setTimeout(() => {
+            setisLoading(false)
+        }, 1990);
+        setTimeout(() => {
+            if (values.password !== values.confirmPassword) {
+                alert("Password does not matched")
+                return
+            } else {
+                const uri = "http://localhost:5353/users/registerAsUser"
+                axios.post(uri, values).then((res) => {
+                    console.log(res);
+                    alert(res.data.message)
+                    // navigate("/signIn")
+                }).catch((err) => {
+                    console.log(err);
+                    alert(err.response.data.message)
+                })
+            }
+        }, 2000);
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
