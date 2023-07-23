@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 function EmployerSignUp({ registerAsJobSeeker }) {
     const navigate = useNavigate()
@@ -47,6 +48,12 @@ function EmployerSignUp({ registerAsJobSeeker }) {
         }),
         onSubmit
     })
+
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setIsCheckboxChecked(event.target.checked);
+    };
     return (
         <>
             <div>
@@ -78,12 +85,12 @@ function EmployerSignUp({ registerAsJobSeeker }) {
                     </div>
                     <div className='d-flex'>
                         <div>
-                            <input className='check-box' type="checkbox" name="" id="" />
+                            <input onChange={handleCheckboxChange} className='check-box' type="checkbox" name="" id="" />
                         </div>
                         <p className='ms-2 terms'>I agree with JobNet's Terms of Service, Privacy Policy, and default Notification Settings.</p>
                     </div>
                     <div className='text-center'>
-                        <button type="submit" className='btn btn-success'>Create Account</button>
+                        <button disabled={!isCheckboxChecked} type="submit" className='btn btn-success'>Create Account</button>
                     </div>
                     <div>
                         <small>To register as a Job Seeker, <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>

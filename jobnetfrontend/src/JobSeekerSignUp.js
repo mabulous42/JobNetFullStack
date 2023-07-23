@@ -47,6 +47,13 @@ function JobSeekerSignUp({registerAsJobSeeker}) {
         }),
         onSubmit
     })
+
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setIsCheckboxChecked(event.target.checked);
+    };
+
     return (
         <>
             <div>
@@ -78,12 +85,12 @@ function JobSeekerSignUp({registerAsJobSeeker}) {
                     </div>
                     <div className='d-flex'>
                         <div>
-                            <input className='check-box' type="checkbox" name="" id="" />
+                            <input onChange={handleCheckboxChange} className='check-box' type="checkbox" name="" id="" />
                         </div>
                         <p className='ms-2 terms'>I agree with JobNet's Terms of Service, Privacy Policy, and default Notification Settings.</p>
                     </div>
                     <div className='text-center'>
-                        <button type="submit" className='btn btn-primary'>Create Account</button>
+                        <button disabled={!isCheckboxChecked} type="submit" className='btn btn-primary'>Create Account</button>
                     </div>
                     <div>
                         <small>To register as an Employer, <span onClick={registerAsJobSeeker} className='text-success job-seeker'>Click here</span></small>
