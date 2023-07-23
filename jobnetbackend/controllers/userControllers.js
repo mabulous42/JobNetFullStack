@@ -2,14 +2,18 @@ const { employerModel, userModel } = require("../models/user.models")
 const bcryptjs = require("bcryptjs")
 const { generateToken, verifyToken } = require("../services/sessions")
 const { sendMessage } = require("../utilities/mailer")
+const { DateTimeDisplay } = require("../utilities/dateAndTime")
+
 
 const registerAsEmployer = async(req,res,next) => {
     let { employerName, email, password } = req.body
+    let date = DateTimeDisplay()
     try {
         const newUser = new employerModel({
             employerName,
             email,
-            password
+            password, 
+            date
         })
         const result = await newUser.save()
         console.log(result)
@@ -23,11 +27,13 @@ const registerAsEmployer = async(req,res,next) => {
 
 const registerAsUser = async(req,res,next) => {
     let { userName, email, password } = req.body
+    let date = DateTimeDisplay()
     try {
         const newUser = new userModel({
             userName,
             email,
-            password
+            password,
+            date
         })
         const result = await newUser.save()
         console.log(result)

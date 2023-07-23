@@ -5,14 +5,16 @@ const bcryptjs = require("bcryptjs")
 const employerSchema = new mongoose.Schema({
     employerName: {type: String, required: true, trim:true, unique:true},
     email: {type: String, unique:true, required: true, trim:true},
-    password: {type: String, required: true, trim: true}
+    password: {type: String, required: true, trim: true},
+    date: {type: String, required: true}
 })
 
 // User schema
 const userSchema = new mongoose.Schema({
     userName: {type: String, required: true, trim:true, unique:true},
     email: {type: String, unique:true, required: true, trim:true},
-    password: {type: String, required: true, trim: true}
+    password: {type: String, required: true, trim: true},
+    date: {type: String, required: true}
 })
 
 let saltRound = 10
