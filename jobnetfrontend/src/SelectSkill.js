@@ -38,7 +38,7 @@ const SelectSkill = () => {
                         ))}
                     </div>
                     <div className='text-center my-3'>
-                        <button className="btn btn-primary">Continue</button>
+                        <button className="btn btn-dark">Continue</button>
                     </div>
                     {/* <div>
                         <h3>Selected Skills:</h3>
