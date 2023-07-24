@@ -3,7 +3,6 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { isDisabled } from '@testing-library/user-event/dist/utils'
 import SpinnerLoader from './SpinnerLoader'
 
 function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {

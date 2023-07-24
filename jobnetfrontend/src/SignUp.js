@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import EmployerSignUp from './EmployerSignUp'
 import JobSeekerSignUp from './JobSeekerSignUp'
 import Loader from './Loader'
+import SelectSkill from './SelectSkill'
+
 
 function SignUp() {
 
@@ -29,8 +31,8 @@ function SignUp() {
         <>
             <div className='body d-flex align-items-center justify-content-center'>
                 <div className='shadow rounded p-4 signup-box'>
-                    {/* <button onClick={showOrHide} className='btn btn-primary'>Show Element</button> */}
-                    {isVisible ? <EmployerSignUp registerAsJobSeeker={registerAsJobSeeker} 
+                    {isVisible ? 
+                    <EmployerSignUp registerAsJobSeeker={registerAsJobSeeker} 
                     setisLoading={setisLoading} 
                     isSpinning={isSpinning}
                     /> 

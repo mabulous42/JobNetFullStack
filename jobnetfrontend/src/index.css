@@ -102,4 +102,24 @@ code {
   bottom: 0;
 }
 
+/* Add this CSS to your main stylesheet or create a new CSS file */
+.skill-button {
+  background-color: #36D7B7;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.skill-button.selected {
+  background-color: #269c8f; /* A deeper color for selected skills */
+}
+
+.skill-page{
+  height: 100vh;
+}
+
+
 
