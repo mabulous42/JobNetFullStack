@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SelectSkill = () => {
     const navigate = useNavigate()
-    const userEmail = JSON.parse(localStorage.getItem("userEmail"))
+    const userDetails = JSON.parse(localStorage.getItem("userEmail"))
     const [newUser, setnewUser] = useState()
     const skillsList = programmingSkills
     const [selectedSkills, setSelectedSkills] = useState([]);
@@ -15,9 +15,9 @@ const SelectSkill = () => {
 
     
 
-    console.log(userEmail);
+    console.log(userDetails);
     useEffect(() => {
-        axios.get(`http://localhost:5353/users/getNewUser/${userEmail}`).then((res)=>{
+        axios.get(`http://localhost:5353/users/getNewUser/${userDetails.email}`).then((res)=>{
             setnewUser(res.data)
             console.log(newUser);
             // console.log(res);
@@ -81,7 +81,7 @@ const SelectSkill = () => {
                 <div className='mx-auto col-sm-8 shadow p-3'>
                     <div className="skills-container">
                         <div className='text-center'>
-                            <h3>Welcome to JobNet, Username</h3>
+                            <h3>Welcome to JobNet, {userDetails.userName}</h3>
                             <h2>ADD YOUR SKILLS</h2>
                         </div>
                         {skillsList.map((skill, index) => (
@@ -94,6 +94,9 @@ const SelectSkill = () => {
                             </button>
                         ))}
                     </div>
+                    {isSelected && selectedSkills.length !== 0? 
+                    <small className='text-danger fw-bold'>You must add at least three (3) skills</small> 
+                    : null}
                     <div className='text-center my-3'>
                         <button disabled={isSelected} onClick={UpdateSkill} className="btn btn-dark">Continue</button>
                     </div>
