@@ -4,8 +4,10 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from './SpinnerLoader'
+import SelectSkill from './SelectSkill'
 
 function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
+    const [userEmail, setuserEmail] = useState([])
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
         setisLoading(true)
@@ -19,9 +21,11 @@ function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
             } else {
                 const uri = "http://localhost:5353/users/registerAsUser"
                 axios.post(uri, values).then((res) => {
+                    setuserEmail(values.email)
                     console.log(res);
-                    alert(res.data.message)
-                    // navigate("/signIn")
+                    localStorage.setItem("userEmail", JSON.stringify(values.email))
+                    alert(res.data.message)                    
+                    navigate(`/user/skills`)
                 }).catch((err) => {
                     console.log(err);
                     alert(err.response.data.message)
