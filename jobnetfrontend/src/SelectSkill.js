@@ -14,8 +14,6 @@ const SelectSkill = () => {
     const [isSelected, setisSelected] = useState(true)
 
     
-
-    console.log(userDetails);
     useEffect(() => {
         axios.get(`http://localhost:5353/users/getNewUser/${userDetails.email}`).then((res)=>{
             setnewUser(res.data)
