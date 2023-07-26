@@ -21,7 +21,7 @@ function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {
                 axios.post(uri, values).then((res) => {
                     console.log(res);
                     alert(res.data.message)
-                    // navigate("/signIn")
+                    navigate("/employerLogin")
                 }).catch((err) => {
                     console.log(err);
                     alert(err.response.data.message)

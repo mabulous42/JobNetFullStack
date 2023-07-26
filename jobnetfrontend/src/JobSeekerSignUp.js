@@ -4,7 +4,6 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from './SpinnerLoader'
-import SelectSkill from './SelectSkill'
 
 function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
     // const [userEmail, setuserEmail] = useState("")

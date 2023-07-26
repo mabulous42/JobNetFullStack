@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import EmployerSignUp from './EmployerSignUp'
 import JobSeekerSignUp from './JobSeekerSignUp'
 import Loader from './Loader'
-import SelectSkill from './SelectSkill'
 
 
 function SignUp() {

@@ -1,4 +1,3 @@
-import React from "react";
 
 const programmingSkills = [
     { id: 1, name: 'HTML' },

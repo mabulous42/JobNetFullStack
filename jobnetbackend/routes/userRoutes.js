@@ -1,5 +1,6 @@
 const userRoutes = require("express").Router()
-const { registerAsEmployer, registerAsUser, userLogin, employerLogin, getNewUser, updateUserSkill, userDashboard } = require("../controllers/userControllers")
+const { registerAsEmployer, registerAsUser, userLogin, employerLogin, updateUserSkill, 
+    userDashboard, allUsers, allEmployer, employerDashboard } = require("../controllers/userControllers")
 const { userValidationSchema, employerValidationSchema } = require("../middlewares/userValidationSchema")
 const { validate } = require("../middlewares/validator")
 
@@ -7,9 +8,11 @@ const { validate } = require("../middlewares/validator")
 userRoutes.post("/registerAsEmployer", validate(employerValidationSchema), registerAsEmployer)
 userRoutes.post("/registerAsUser", validate(userValidationSchema), registerAsUser)
 userRoutes.post("/userLogin", userLogin)
-userRoutes.get("/employerLogin", employerLogin)
-userRoutes.get("/getNewUser/:email", getNewUser)
+userRoutes.post("/employerLogin", employerLogin)
 userRoutes.post("/updateUserSkill", updateUserSkill)
 userRoutes.get("/userDashboard", userDashboard)
+userRoutes.get("/employerDashboard", employerDashboard)
+userRoutes.get("/allUsers", allUsers)
+userRoutes.get("/allEmployer", allEmployer)
 
 module.exports = userRoutes

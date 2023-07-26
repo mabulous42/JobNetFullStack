@@ -92,9 +92,9 @@ const employerLogin = async (req, res, next) => {
 const updateUserSkill = async (req, res, next) => {
     console.log(req.body);
     try {
-        const {skills, id} = req.body;
-        console.log(skills, id);
-        const update = await userModel.findByIdAndUpdate({_id:id}, {$set:{skills: skills}});
+        const {skills, email} = req.body;
+        console.log(skills, email);
+        const update = await userModel.findOneAndUpdate({email:email}, {$set:{skills: skills}});
         console.log("updated: " +update);
         return res.status(201).send({ message: "Items Updated Successful", status: true })
     } catch (error) {
@@ -102,25 +102,10 @@ const updateUserSkill = async (req, res, next) => {
     }
 }
 
-const getNewUser = async (req, res, next) => {
-    
-    try {
-        let email1 = req.params.email;
-        console.log(email1);
-        const entry = await userModel.findOne({email:email1});
-        const {_id, userName, email, password, skills} = entry;
-        console.log(_id, userName, email, password, skills); 
-        res.status(200).send(entry)  
-    } catch (error) {
-        console.log(error);
-        return res.status(500).send({ message: "Internal server error", status: false })
-    }
-}
 
 const userDashboard = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1]
-        
+        const token = req.headers.authorization.split(" ")[1]        
         const email = verifyToken(token)
         console.log(email)
         const user = await userModel.findOne({ email: email })
@@ -131,6 +116,39 @@ const userDashboard = async (req, res, next) => {
     }
 }
 
+const employerDashboard = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization.split(" ")[1]        
+        const email = verifyToken(token)
+        console.log(email)
+        const user = await employerModel.findOne({ email: email })
+        if (!user) return res.status(404).send({ message: "User not found", status: false })
+        res.status(200).send(user)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const allUsers = async (req, res, next) => {
+    try {
+        const users = await userModel.find({}, { email: 1, password: 1})
+        console.log(users)
+        res.status(200).send(users)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const allEmployer = async (req, res, next) => {
+    try {
+        const users = await employerModel.find({}, { email: 1, password: 1})
+        console.log(users)
+        res.status(200).send(users)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = { registerAsEmployer, registerAsUser, userLogin, 
-    employerLogin, updateUserSkill, getNewUser, userDashboard }
+    employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, employerDashboard }
