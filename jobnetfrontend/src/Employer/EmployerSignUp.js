@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import SpinnerLoader from './SpinnerLoader'
+import SpinnerLoader from '../SpinnerLoader'
 
 function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {
     const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import EmployerSignUp from './EmployerSignUp'
-import JobSeekerSignUp from './JobSeekerSignUp'
+import EmployerSignUp from './Employer/EmployerSignUp'
+import JobSeekerSignUp from './JobSeeker/JobSeekerSignUp'
 import Loader from './Loader'
 
 

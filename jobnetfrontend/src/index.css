@@ -121,5 +121,102 @@ code {
   height: 100vh;
 }
 
+.sidebar{
+  top: 0;
+  width: 16rem;
+  height: 100vh;
+}
+
+.search-input{
+  width: 15rem;
+  padding-left: 2rem;
+  outline: none;
+}
+
+.navbar{
+  margin-left: 19.5rem;
+  margin-right: 2rem;
+  background-color: rgb(212, 216, 215);
+}
+
+.content-container{
+  margin-left: 16rem;
+  height: 100vh;
+}
+
+.post-a-job-btn{
+  background-color: rgb(36,64,52);
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s linear;
+}
+
+.post-a-job-btn:hover{
+  background-color: rgb(210,243,76);
+  color: black;
+}
+
+.inner-content-div{
+  border-radius: 4rem 0 0 4rem;
+  padding: 6rem 3.5rem;
+  background-color: rgb(212, 216, 215);
+}
+
+.search-icon-div{
+  left: 0.5rem;
+}
+
+.logo-div{
+  width: 70%;
+}
+
+.profile-picture-div{
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.username-div{
+  width: 80%;
+  cursor: pointer;
+}
+
+.username-div h5{
+  font-size: 18px;
+}
+
+.arrow-down-div{
+  top: 0;
+  right: 1rem;
+}
+
+button{
+  background-color: inherit;
+}
+
+.drop-btn:hover{
+  background-color: rgb(212, 216, 215);
+}
+
+.side-menu-div{
+  width: 80%;
+}
+
+.side-menu-div h5{
+  font-size: 17px;
+}
+
+.dashboard-icon-div{
+  width: 1.5rem;
+}
+
+.side-menu-btn:hover{
+  color: green;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
 
 

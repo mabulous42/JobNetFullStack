@@ -1,9 +1,11 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function EmployerDashboard() {
-    const userToken = JSON.parse(localStorage.getItem("token"))
+function PostJob() {
+    let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
     const [currentUser, setcurrentUser] = useState("")
@@ -25,11 +27,9 @@ function EmployerDashboard() {
     }, [])
   return (
     <>
-        <div>
-            <h1>Welcome to the Employer Dashboard, {currentUser}</h1>
-        </div>
+        <h1>Post Job</h1>
     </>
   )
 }
 
-export default EmployerDashboard
+export default PostJob

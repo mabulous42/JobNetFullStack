@@ -4,7 +4,7 @@ const SECRET = "testRam"
 
 const generateToken = (email) => {
     try {
-        let token = jsonwebtoken.sign({email},  SECRET, {expiresIn: "1m"})
+        let token = jsonwebtoken.sign({email},  SECRET, {expiresIn: "30m"})
         return token;
     } catch (error) {
         console.log(error);
