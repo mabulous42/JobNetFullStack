@@ -3,7 +3,7 @@ import React from 'react'
 function NavBar() {
     return (
         <>
-            <div className='navbar fixed-top'>
+            <div className='navbar fixed-top py-3'>
                 <div className='w-100 d-flex justify-content-end'>
                     <div className='position-relative me-3 d-flex align-items-center justify-content-center'>
                         <input className='search-input rounded-pill py-2' placeholder='Search here...' type="text" name="" id="" />

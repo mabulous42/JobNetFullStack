@@ -38,7 +38,7 @@ function SideBar() {
           }
         </div>
         <div className='mt-4 side-menu-div mx-auto'>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
+          <button className='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'>
             <div className='dashboard-icon-div'>
               <img src={require("./image/dashboard.png")} alt="" className='w-100' />
             </div>
@@ -70,19 +70,19 @@ function SideBar() {
           </button>
           <button className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
             <div className='dashboard-icon-div'>
-              <img src={require("./image/dashboard.png")} alt="" className='w-100' />
+            <i class="bi bi-bookmark fs-4"></i>
             </div>
             <h5 className='mt-1 ms-3'>Saved Job</h5>
           </button>
           <button className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
             <div className='dashboard-icon-div'>
-              <img src={require("./image/dashboard.png")} alt="" className='w-100' />
+            <i class="bi bi-gear fs-4"></i>
             </div>
             <h5 className='mt-1 ms-3'>Account Settings</h5>
           </button>
           <button className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
             <div className='dashboard-icon-div'>
-              <img src={require("./image/dashboard.png")} alt="" className='w-100' />
+            <i class="bi bi-trash fs-4"></i>
             </div>
             <h5 className='mt-1 ms-3'>Delete Account</h5>
           </button>
@@ -90,7 +90,7 @@ function SideBar() {
             <div className='dashboard-icon-div'>
               <i class="bi bi-box-arrow-left text-danger fs-4"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Sign Out</h5>
+            <h5 className='mt-1 ms-3 text-danger'>Sign Out</h5>
           </button>
         </div>
       </div>

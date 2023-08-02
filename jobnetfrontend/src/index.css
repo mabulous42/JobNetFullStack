@@ -210,13 +210,43 @@ button{
   width: 1.5rem;
 }
 
+.dashboard{
+  background-color: rgb(63,99,77);
+}
+
 .side-menu-btn:hover{
   color: green;
+}
+
+.box{
+  width: 14.5rem;
+}
+
+.box p{
+  line-height: 10px;
+  font-size: 18px;
+}
+
+.icn-div{
+  background-color: rgb(210,243,76);
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.profile-view-div{
+  width: 35rem;
+}
+
+.recently-applied-job-div{
+  width: 25rem;
 }
 
 ::-webkit-scrollbar{
   display: none;
 }
+
+
+
 
 
 
