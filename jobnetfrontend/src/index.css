@@ -245,6 +245,21 @@ button{
   text-decoration: none;
 }
 
+.job-text{
+  color: rgb(49,121,90);
+}
+
+.job-input{
+  padding: 12px;
+  border: 1px solid rgb(229,229,229);
+  outline: none;
+  font-size: 18px;
+}
+
+.salary{
+  width: 44.6%;
+}
+
 ::-webkit-scrollbar{
   display: none;
 }

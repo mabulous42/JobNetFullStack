@@ -13,26 +13,13 @@ const SelectSkill = () => {
 
     const [isSelected, setisSelected] = useState(true)
 
-    
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5353/users/getNewUser/${userDetails.email}`).then((res)=>{
-    //         setnewUser(res.data)
-    //         console.log(newUser);
-    //         // console.log(res);
-    //     }).catch((err)=>{
-    //         console.log(err);
-    //     })
-    // }, [])
     console.log(userDetails);
 
     const UpdateSkill = () => {
-        // newUser.skills = selectedSkills;
         let skills = selectedSkills
         let email = userDetails.email
         console.log(email);
-        // let id = newUser._id
         let data = {skills, email}
-        // console.log(newUser);
         const uri = "http://localhost:5353/users/updateUserSkill"
         axios.post(uri, data).then((res) => {
             console.log(res);
