@@ -241,6 +241,10 @@ button{
   width: 25rem;
 }
 
+.link{
+  text-decoration: none;
+}
+
 ::-webkit-scrollbar{
   display: none;
 }

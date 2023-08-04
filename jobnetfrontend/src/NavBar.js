@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NavBar() {
+function NavBar(props) {
     return (
         <>
             <div className='navbar fixed-top py-3'>
@@ -13,7 +13,7 @@ function NavBar() {
                         <i class="bi bi-bell fs-3"></i>
                     </div>
                     <div className='me-3'>
-                        <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
+                        {props.PostJobBtn}
                     </div>
                 </div>
             </div>

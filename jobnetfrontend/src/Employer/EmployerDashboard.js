@@ -33,73 +33,81 @@ function EmployerDashboard() {
     }
     return (
         <>
-            <NavBar />
-            <SideBar />
-            <ContentContainer 
-            employerDashboard={
-                <div className='mt-4'>
-                    <h1 className='mb-4'>Dashboard</h1>
-                    <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly flex-wrap'>
-                        <div className='box shadow rounded-5 bg-white mb-2 p-3'>
-                            <div className='d-flex align-items-center justify-content-between'>
-                                <div>
-                                    <h1>1.7k+</h1>
-                                    <p className='text-muted'>Posted Jobs</p>
+            <NavBar 
+            PostJobBtn={
+            <Link to={"/postJob"}>
+                <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
+            </Link>}
+            />
+            <SideBar 
+            dashboardStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
+            PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
+            />
+            <ContentContainer
+                employerDashboard={
+                    <div className='mt-4'>
+                        <h1 className='mb-4'>Dashboard</h1>
+                        <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly flex-wrap'>
+                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <div>
+                                        <h1>1.7k+</h1>
+                                        <p className='text-muted'>Total Visitor</p>
+                                    </div>
+                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                        <i class="bi bi-pencil-square fs-4"></i>
+                                    </div>
                                 </div>
-                                <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                <i class="bi bi-pencil-square fs-4"></i>
+                            </div>
+                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <div>
+                                        <h1>100</h1>
+                                        <p className='text-muted'>Posted Jobs</p>
+                                    </div>
+                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                        <i class="bi bi-pencil-square fs-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <div>
+                                        <h1>1</h1>
+                                        <p className='text-muted'>Applied Jobs</p>
+                                    </div>
+                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                        <i class="bi bi-bookmarks fs-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <div>
+                                        <h1>2.5k+</h1>
+                                        <p className='text-muted'>Views</p>
+                                    </div>
+                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                        <i class="bi bi-eye fs-4"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='box shadow rounded-5 bg-white mb-2 p-3'>
-                        <div className='d-flex align-items-center justify-content-between'>
-                                <div>
-                                    <h1>1.7k+</h1>
-                                    <p className='text-muted'>Posted Jobs</p>
+                        <div className=''>
+                            <div className='d-flex'>
+                                <div className='bg-white profile-view-div rounded-4'>
+                                    <h4 className='px-4 py-2'>Profile View</h4>
+                                    <hr className='mt-0' />
+                                    <img src={require("../image/main-graph.png")} alt="" className='w-100 p-5' />
                                 </div>
-                                <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                <i class="bi bi-pencil-square fs-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='box shadow rounded-5 bg-white mb-2 p-3'>
-                        <div className='d-flex align-items-center justify-content-between'>
-                                <div>
-                                    <h1>1.7k+</h1>
-                                    <p className='text-muted'>Posted Jobs</p>
-                                </div>
-                                <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                <i class="bi bi-pencil-square fs-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='box shadow rounded-5 bg-white mb-2 p-3'>
-                        <div className='d-flex align-items-center justify-content-between'>
-                                <div>
-                                    <h1>1.7k+</h1>
-                                    <p className='text-muted'>Posted Jobs</p>
-                                </div>
-                                <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                <i class="bi bi-pencil-square fs-4"></i>
+                                <div className='ms-5 bg-white recently-applied-job-div rounded-4'>
+                                    <h4 className='px-4 py-2'>Recent Applied Job</h4>
+                                    <hr className='mt-0' />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className=''>
-                        <div className='d-flex'>
-                            <div className='bg-white profile-view-div rounded-4'>
-                                <h4 className='px-4 py-2'>Profile View</h4>
-                                <hr className='mt-0'/>
-                                <img src={require("../image/main-graph.png")} alt="" className='w-100 p-5'/>
-                            </div>
-                            <div className='ms-5 bg-white recently-applied-job-div rounded-4'>
-                            <h4 className='px-4 py-2'>Recent Applied Job</h4>
-                                <hr className='mt-0'/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            } />
+                } />
             {/* <div className='d-flex align-items-center'>
                 <h1>Welcome to the Employer Dashboard, {currentUser}</h1>
                 <div className='ms-3'>

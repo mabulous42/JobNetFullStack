@@ -6,6 +6,7 @@ function ContentContainer(props) {
         <div className='content-container overflow-auto'>
             <div className='inner-content-div'>
                 {props.employerDashboard}
+                {props.postJob}
             </div>
         </div>
     </>
