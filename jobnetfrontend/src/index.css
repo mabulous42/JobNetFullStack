@@ -218,12 +218,21 @@ button{
   color: green;
 }
 
+.parent-box{
+  flex-wrap: wrap;
+}
+
 .box{
   width: 14.5rem;
+  border-radius: 2rem;
+  /* width: 24%; */
+}
+
+.box h1{
+  font-size: 28px;
 }
 
 .box p{
-  line-height: 10px;
   font-size: 18px;
 }
 
@@ -239,6 +248,7 @@ button{
 
 .recently-applied-job-div{
   width: 25rem;
+  margin-left: 2rem;
 }
 
 .link{
@@ -260,8 +270,85 @@ button{
   width: 44.6%;
 }
 
+.profile-view-inner-div{
+  display: flex;
+}
+
+.cancel-btn{
+  color: rgb(49,121,90);
+  font-weight: 600;
+  font-size: 18px;
+}
+
 ::-webkit-scrollbar{
   display: none;
+}
+
+@media (max-width: 767px) {
+  .sidebar{
+    display: none;
+  }
+
+  .content-container{
+    margin-left: 0;
+  }
+
+  .inner-content-div{
+    border-radius: 0;
+  }
+
+  .navbar{
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .profile-view-inner-div{
+    display: block;
+  }
+
+  .profile-view-div{
+    width: 100%;
+  }
+
+  .recently-applied-job-div{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
+  .box{
+    width: 100%;
+  }
+}
+
+@media (max-width: 1115px) {
+  .profile-view-div{
+    width: 100%;
+  }
+
+  .recently-applied-job-div{
+    width: 100%;
+  }
+
+  .box{
+    border-radius: 1rem;
+    width: 10.5rem;
+  }
+
+  .box h1{
+    font-size: 22px;
+  }
+
+  .box p{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .box{
+    width: 9.5rem;
+  }
 }
 
 

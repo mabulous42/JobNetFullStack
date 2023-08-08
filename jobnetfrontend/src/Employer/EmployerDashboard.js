@@ -47,8 +47,8 @@ function EmployerDashboard() {
                 employerDashboard={
                     <div className='mt-4'>
                         <h1 className='mb-4'>Dashboard</h1>
-                        <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly flex-wrap'>
-                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                        <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly parent-box'>
+                            <div className='box shadow bg-white mb-2 p-2 px-3'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
                                         <h1>1.7k+</h1>
@@ -59,7 +59,7 @@ function EmployerDashboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                            <div className='box shadow bg-white mb-2 p-2 px-3'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
                                         <h1>100</h1>
@@ -70,7 +70,7 @@ function EmployerDashboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                            <div className='box shadow bg-white mb-2 p-2 px-3'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
                                         <h1>1</h1>
@@ -81,7 +81,7 @@ function EmployerDashboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='box shadow rounded-5 bg-white mb-2 p-3'>
+                            <div className='box shadow bg-white mb-2 p-2 px-3'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
                                         <h1>2.5k+</h1>
@@ -93,16 +93,17 @@ function EmployerDashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className=''>
-                            <div className='d-flex'>
+                        <div className='chart-div'>
+                            <div className='profile-view-inner-div'>
                                 <div className='bg-white profile-view-div rounded-4'>
                                     <h4 className='px-4 py-2'>Profile View</h4>
                                     <hr className='mt-0' />
                                     <img src={require("../image/main-graph.png")} alt="" className='w-100 p-5' />
                                 </div>
-                                <div className='ms-5 bg-white recently-applied-job-div rounded-4'>
+                                <div className='bg-white recently-applied-job-div rounded-4'>
                                     <h4 className='px-4 py-2'>Recent Applied Job</h4>
                                     <hr className='mt-0' />
+                                    <div>lorem*5</div>
                                 </div>
                             </div>
                         </div>
