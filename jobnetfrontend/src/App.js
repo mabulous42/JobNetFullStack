@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignUp from './SignUp';
 import { Route, Routes } from 'react-router-dom';
-import SelectSkill from './SelectSkill';
+import SelectSkill from './JobSeeker/SelectSkill';
 import UserDashboard from './JobSeeker/UserDashboard';
 import UserLogin from './JobSeeker/UserLogin';
 import EmployerDashboard from './Employer/EmployerDashboard';

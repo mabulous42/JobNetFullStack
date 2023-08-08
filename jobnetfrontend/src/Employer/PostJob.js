@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import NavBar from '../NavBar'
 import SideBar from '../SideBar'
 import ContentContainer from '../ContentContainer'
-import SelectSkill from '../SelectSkill'
+import SelectSkill from '../JobSeeker/SelectSkill'
 import programmingSkills from '../SkillsApi'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
@@ -23,6 +23,7 @@ function PostJob() {
     const [currentUser, setcurrentUser] = useState("")
 
     const [selectedJobType, setselectedJobType] = useState("")
+    const [selectedSalaryType, setselectedSalaryType] = useState("")
 
     useEffect(() => {
         const uri = "http://localhost:5353/users/employerDashboard"
@@ -77,15 +78,18 @@ function PostJob() {
     };
 
     const onSubmit = (values, errors) => {
-        let jobDetails = {
+        let postedJobDetails = {
             jobtitle: values.jobTitle, 
             jobDescription: values.jobDescription,
+            salaryType: selectedSalaryType,
             min_salary: values.min_salary,
             max_salary: values.max_salary,
             abbas: "Abbas",
-            jobType: selectedJobType
+            jobType: selectedJobType,
+            requiredSkills: selectedSkills
         }
-        console.log(jobDetails);
+        console.log(postedJobDetails);
+        const uri = ""
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
@@ -93,8 +97,7 @@ function PostJob() {
             jobTitle: "",
             jobDescription: "",
             min_salary: "",
-            max_salary: "",
-            required_skills: ""
+            max_salary: ""
         },
         validationSchema: yup.object().shape({
             jobTitle: yup.string()
@@ -107,8 +110,7 @@ function PostJob() {
             min_salary: yup.number()
                 .required("This field cannot be empty"),
             max_salary: yup.number()
-                .required("This field cannot be empty"),
-            required_skills: yup.string()
+                .required("This field cannot be empty")
         }),
         onSubmit
     })
@@ -158,7 +160,7 @@ function PostJob() {
                                     <h6>Salary</h6>
                                     <div className='d-flex'>
                                         <div className='w-50'>
-                                            <select name="" id="" className='salary job-input rounded w-100'>
+                                            <select onChange={(e)=>setselectedSalaryType(e.target.value)} name="" id="" className='salary job-input rounded w-100'>
                                                 <option className='form-control' value="Monthly">Monthly</option>
                                                 <option className='form-control' value="Weekly">Weekly</option>
                                             </select>
