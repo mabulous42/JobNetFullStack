@@ -149,6 +149,19 @@ const allEmployer = async (req, res, next) => {
     }
 }
 
+const updateEmployerPostedJobs = async (req, res, next) => {
+    console.log(req.body);
+    // try {
+    //     const {skills, email} = req.body;
+    //     console.log(skills, email);
+    //     const update = await userModel.findOneAndUpdate({email:email}, {$set:{skills: skills}});
+    //     console.log("updated: " +update);
+    //     return res.status(201).send({ message: "Items Updated Successful", status: true })
+    // } catch (error) {
+    //     next(error)
+    // }
+}
+
 
 module.exports = { registerAsEmployer, registerAsUser, userLogin, 
-    employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, employerDashboard }
+    employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, employerDashboard, updateEmployerPostedJobs }

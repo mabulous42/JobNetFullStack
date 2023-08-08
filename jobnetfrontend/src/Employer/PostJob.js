@@ -84,12 +84,16 @@ function PostJob() {
             salaryType: selectedSalaryType,
             min_salary: values.min_salary,
             max_salary: values.max_salary,
-            abbas: "Abbas",
             jobType: selectedJobType,
             requiredSkills: selectedSkills
         }
         console.log(postedJobDetails);
-        const uri = ""
+        const uri = "http://localhost:5353/users//employerJobs"
+        axios.post(uri, postedJobDetails).then((res)=>{
+            console.log(res);
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
