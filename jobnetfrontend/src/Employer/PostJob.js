@@ -43,43 +43,47 @@ function PostJob() {
 
     const handleSkillClick = (e, skill) => {
         e.preventDefault()
-
         setSelectedSkills((prevSelectedSkills) => {
-            // if (prevSelectedSkills.includes(skill)) {
-            //     console.log(selectedSkills.length - 1);
-            //     if (selectedSkills.length - 1 <= 2) {
-            //         setisSelected(true)
-            //     }
-            //     else {
-            //         setisSelected(false)
-            //     }
-            //     // If the skill is already selected, remove it from the list
-            //     return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
-            // } else {
-            //     if (selectedSkills.length + 1 > 2) {
-            //         setisSelected(false)
-            //     }
-            //     else {
-            //         setisSelected(true)
-            //     }
-            //     // console.log(selectedSkills.length+1);
-            //     // If the skill is not selected, add it to the list
-            //     return [...prevSelectedSkills, skill];
-            // }
             if (prevSelectedSkills.includes(skill)) {
+                console.log("Undo: "+ Number(selectedSkills.length - 1));
+                if (selectedSkills.length - 1 === 0) {
+                    setisSelected(true)
+                }
+                else {
+                    setisSelected(false)
+                }
+                console.log(isSelected);
+
+                // If the skill is already selected, remove it from the list
                 return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
-
             } else {
-                return [...prevSelectedSkills, skill];
+                console.log("Selected: "+Number(selectedSkills.length + 1));
+                if (selectedSkills.length + 1 >= 1) {
+                    setisSelected(false)
+                }
+                else {
+                    setisSelected(true)
+                }
+                console.log(isSelected);
 
+                console.log(selectedSkills.length+1);
+                // If the skill is not selected, add it to the list
+                return [...prevSelectedSkills, skill];
             }
+            // if (prevSelectedSkills.includes(skill)) {
+            //     return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
+
+            // } else {
+            //     return [...prevSelectedSkills, skill];
+
+            // }
 
         });
     };
 
     const onSubmit = (values, errors) => {
         let postedJobDetails = {
-            jobTitle: values.jobTitle, 
+            jobTitle: values.jobTitle,
             jobDescription: values.jobDescription,
             salaryType: selectedSalaryType,
             min_salary: values.min_salary,
@@ -92,19 +96,19 @@ function PostJob() {
         // let data = {postedJobDetails, email}
 
         // console.log(data);
-        
+
         console.log(postedJobDetails);
         if (selectedJobType === "" || selectedSalaryType === "") {
             alert("Make sure all the field is filled")
         } else {
             const uri = "http://localhost:5353/users/jobs"
-            axios.post(uri, postedJobDetails).then((res)=>{
+            axios.post(uri, postedJobDetails).then((res) => {
                 console.log(res);
                 alert(res.data.message)
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err);
                 alert(err.response.data.message)
-            })            
+            })
         }
     }
 
@@ -166,7 +170,7 @@ function PostJob() {
                                 </div>
                                 <div className='mt-4 select-container'>
                                     <h6>Job Type</h6>
-                                    <select onChange={(e)=>setselectedJobType(e.target.value)} name="" id="" className='w-50 job-input rounded'>
+                                    <select onChange={(e) => setselectedJobType(e.target.value)} name="" id="" className='w-50 job-input rounded'>
                                         <option className='form-control' value="" selected disabled>Select</option>
                                         <option className='form-control' value="Full Time">Full Time</option>
                                         <option className='form-control' value="Part Time">Part Time</option>
@@ -177,7 +181,7 @@ function PostJob() {
                                     <h6>Salary</h6>
                                     <div className='d-flex'>
                                         <div className='w-50'>
-                                            <select onChange={(e)=>setselectedSalaryType(e.target.value)} name="" id="" className='salary job-input rounded w-100'>
+                                            <select onChange={(e) => setselectedSalaryType(e.target.value)} name="" id="" className='salary job-input rounded w-100'>
                                                 <option className='form-control' value="" selected disabled>Select</option>
                                                 <option className='form-control' value="Monthly">Monthly</option>
                                                 <option className='form-control' value="Weekly">Weekly</option>
@@ -221,7 +225,7 @@ function PostJob() {
                             </div>
                             <div className='d-flex'>
                                 <div className='me-3'>
-                                    <button className="btn btn-dark rounded-pill px-5 py-2">Next</button>
+                                    <button disabled={isSelected} className="btn btn-dark rounded-pill px-5 py-2">Next</button>
                                 </div>
                                 <div>
                                     <Link to={"/employerDashboard"}>
