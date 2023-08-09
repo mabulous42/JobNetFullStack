@@ -20,7 +20,7 @@ function PostJob() {
     let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
-    const [currentUser, setcurrentUser] = useState("")
+    const [email, setemail] = useState("")
 
     const [selectedJobType, setselectedJobType] = useState("")
     const [selectedSalaryType, setselectedSalaryType] = useState("")
@@ -33,7 +33,7 @@ function PostJob() {
             }
         }).then((res) => {
             console.log(res);
-            setcurrentUser(res.data.employerName)
+            setemail(res.data.email)
         }).catch((err) => {
             console.log(err)
             alert("Session Timeout")
@@ -79,21 +79,33 @@ function PostJob() {
 
     const onSubmit = (values, errors) => {
         let postedJobDetails = {
-            jobtitle: values.jobTitle, 
+            jobTitle: values.jobTitle, 
             jobDescription: values.jobDescription,
             salaryType: selectedSalaryType,
             min_salary: values.min_salary,
             max_salary: values.max_salary,
             jobType: selectedJobType,
-            requiredSkills: selectedSkills
+            requiredSkills: selectedSkills,
+            email: email
         }
+
+        // let data = {postedJobDetails, email}
+
+        // console.log(data);
+        
         console.log(postedJobDetails);
-        const uri = "http://localhost:5353/users//employerJobs"
-        axios.post(uri, postedJobDetails).then((res)=>{
-            console.log(res);
-        }).catch((err)=>{
-            console.log(err);
-        })
+        if (selectedJobType === "" || selectedSalaryType === "") {
+            alert("Make sure all the field is filled")
+        } else {
+            const uri = "http://localhost:5353/users/jobs"
+            axios.post(uri, postedJobDetails).then((res)=>{
+                console.log(res);
+                alert(res.data.message)
+            }).catch((err)=>{
+                console.log(err);
+                alert(err.response.data.message)
+            })            
+        }
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
@@ -155,6 +167,7 @@ function PostJob() {
                                 <div className='mt-4 select-container'>
                                     <h6>Job Type</h6>
                                     <select onChange={(e)=>setselectedJobType(e.target.value)} name="" id="" className='w-50 job-input rounded'>
+                                        <option className='form-control' value="" selected disabled>Select</option>
                                         <option className='form-control' value="Full Time">Full Time</option>
                                         <option className='form-control' value="Part Time">Part Time</option>
                                         <option className='form-control' value="Freelance">Freelance</option>
@@ -165,6 +178,7 @@ function PostJob() {
                                     <div className='d-flex'>
                                         <div className='w-50'>
                                             <select onChange={(e)=>setselectedSalaryType(e.target.value)} name="" id="" className='salary job-input rounded w-100'>
+                                                <option className='form-control' value="" selected disabled>Select</option>
                                                 <option className='form-control' value="Monthly">Monthly</option>
                                                 <option className='form-control' value="Weekly">Weekly</option>
                                             </select>
@@ -211,7 +225,7 @@ function PostJob() {
                                 </div>
                                 <div>
                                     <Link to={"/employerDashboard"}>
-                                        <button className="py-2 cancel-btn">Cancel</button>
+                                        <button type='submit' className="py-2 cancel-btn">Cancel</button>
                                     </Link>
                                 </div>
                             </div>

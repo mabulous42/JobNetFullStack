@@ -20,7 +20,7 @@ function UserDashboard() {
         }).catch((err) => {
             console.log(err)
             alert("Session Timeout")
-            navigate("/login")
+            navigate("/userLogin")
         })
     }, [])
     
