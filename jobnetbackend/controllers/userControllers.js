@@ -173,9 +173,19 @@ const jobs = async (req, res, next) => {
     }
 }
 
+const allJobs = async (req, res, next) => {
+    try {
+        const jobs = await postedJobsModel.find({})
+        console.log(jobs)
+        res.status(200).send(jobs)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = { 
     registerAsEmployer, registerAsUser, userLogin, 
     employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, 
-    employerDashboard, jobs 
+    employerDashboard, jobs, allJobs 
 }

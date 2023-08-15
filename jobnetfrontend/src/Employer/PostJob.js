@@ -45,14 +45,12 @@ function PostJob() {
         e.preventDefault()
         setSelectedSkills((prevSelectedSkills) => {
             if (prevSelectedSkills.includes(skill)) {
-                console.log("Undo: "+ Number(selectedSkills.length - 1));
                 if (selectedSkills.length - 1 === 0) {
                     setisSelected(true)
                 }
                 else {
                     setisSelected(false)
                 }
-                console.log(isSelected);
 
                 // If the skill is already selected, remove it from the list
                 return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
@@ -64,9 +62,6 @@ function PostJob() {
                 else {
                     setisSelected(true)
                 }
-                console.log(isSelected);
-
-                console.log(selectedSkills.length+1);
                 // If the skill is not selected, add it to the list
                 return [...prevSelectedSkills, skill];
             }
@@ -105,6 +100,7 @@ function PostJob() {
             axios.post(uri, postedJobDetails).then((res) => {
                 console.log(res);
                 alert(res.data.message)
+                navigate("/employerDashboard")
             }).catch((err) => {
                 console.log(err);
                 alert(err.response.data.message)

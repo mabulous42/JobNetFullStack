@@ -4,27 +4,26 @@ import { Link, useNavigate } from 'react-router-dom'
 import SideBar from '../SideBar'
 import NavBar from '../NavBar'
 import ContentContainer from '../ContentContainer'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUser } from '../Functions/GetData'
 
 function EmployerDashboard() {
-    let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
-    const [currentUser, setcurrentUser] = useState("")
+    const dispatch = useDispatch()
+
+    const { isFetching, UserDetails, fetchErr } = useSelector((state) => state.CurrentUserSlice)
+
+    console.log(UserDetails);
+
+   
+    // localStorage.setItem("user", JSON.stringify(UserDetails))
+
+    // let getCU = JSON.parse(localStorage.getItem("user")) || [];
+    // console.log(getCU.employerName);
 
     useEffect(() => {
-        const uri = "http://localhost:5353/users/employerDashboard"
-        axios.get(uri, {
-            headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-        }).then((res) => {
-            console.log(res);
-            setcurrentUser(res.data.employerName)
-        }).catch((err) => {
-            console.log(err)
-            alert("Session Timeout")
-            navigate("/employerLogin")
-        })
+        getUser(dispatch)
     }, [])
 
     const signOut = () => {
@@ -33,15 +32,15 @@ function EmployerDashboard() {
     }
     return (
         <>
-            <NavBar 
-            PostJobBtn={
-            <Link to={"/postJob"}>
-                <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
-            </Link>}
+            <NavBar
+                PostJobBtn={
+                    <Link to={"/postJob"}>
+                        <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
+                    </Link>}
             />
-            <SideBar 
-            dashboardStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
-            PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
+            <SideBar
+                dashboardStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
+                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
             />
             <ContentContainer
                 employerDashboard={

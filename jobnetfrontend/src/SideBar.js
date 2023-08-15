@@ -22,7 +22,7 @@ function SideBar(props) {
             }
         }).then((res) => {
             console.log(res);
-            setcurrentUser(res.data.employerName)
+            setcurrentUser(res.data)
         }).catch((err) => {
             console.log(err)
             alert("Session Timeout")
@@ -32,7 +32,13 @@ function SideBar(props) {
 
     const signOut = () => {
         localStorage.removeItem("token")
-        navigate("/employerLogin")
+        if (currentUser.employerName) {
+          navigate("/employerLogin") 
+          // console.log("Employer is logged in");         
+        } else {
+          navigate("/userLogin")  
+          // console.log("Job seeker is logged in");        
+        }
     }
 
   return (
@@ -48,7 +54,7 @@ function SideBar(props) {
         </div>
         <div className='username-div mt-2 mx-auto position-relative' onClick={dropdown}>
           <div className='d-flex justify-content-center'>
-            <h5 className='text-center'>{currentUser}</h5>
+            <h5 className='text-center'>{currentUser.employerName}</h5>
             <div className='arrow-down-div ms-1'>
               <i class="bi bi-caret-down-fill"></i>
             </div>
@@ -129,7 +135,7 @@ function SideBar(props) {
             </div>
             <h5 className='mt-1 ms-3'>Delete Account</h5>
           </button>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
+          <button onClick={signOut} className='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'>
             <div className='dashboard-icon-div'>
               <i class="bi bi-box-arrow-left text-danger fs-4"></i>
             </div>
