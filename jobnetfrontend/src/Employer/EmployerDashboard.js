@@ -109,7 +109,8 @@ function EmployerDashboard() {
                             </div>
                         </div>
                     </div>
-                } />
+                }
+            />
             {/* <div className='d-flex align-items-center'>
                 <h1>Welcome to the Employer Dashboard, {currentUser}</h1>
                 <div className='ms-3'>

@@ -169,7 +169,7 @@ code {
   background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(./image/banner.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 3rem;
+  padding: 4.5rem;
   /* background-position: center; */
   top: 4.7rem;
   position: fixed;
