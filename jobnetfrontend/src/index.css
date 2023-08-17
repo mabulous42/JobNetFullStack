@@ -16,6 +16,7 @@ code {
   border: 0;
   margin: 0;
   padding: 0;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
 }
 
 .body{
@@ -283,8 +284,16 @@ button{
 }
 
 /* user-styling */
+.job-display-div:hover .job-desc-text{
+  color: rgb(5, 115, 218);
+}
+
 .job-type{
-  background-color: rgba(0, 81, 255, 0.37);
+  background-color: rgba(0, 81, 255, 0.178);
+}
+
+.jobType-text, .skill-text{
+  font-weight: 600;
 }
 
 .jobs-div{
@@ -293,6 +302,14 @@ button{
 
 .jobs-div:hover{
   transform: scale(1.02);
+}
+
+.jobTitle-text{
+  font-weight: 600;
+}
+
+.skill-div{
+  background-color: rgba(0, 81, 255, 0.37);
 }
 
 
