@@ -43,12 +43,7 @@ function SideBar(props) {
 
   return (
     <>
-      <div className='sidebar position-absolute overflow-auto py-4'>
-        <Link to={"/employerDashboard"}>
-          <div className='logo-div mx-auto text-center'>
-            <img src={require("./image/jnn.png")} alt="" className='w-100' />
-          </div>
-        </Link>
+      <div className='sidebar position-absolute overflow-auto py-4'>        
         <div className='profile-picture-div mx-auto mt-4 rounded-circle d-flex align-items-center justify-content-center'>
           <img src={require("./image/user.png")} alt="" className='w-100' />
         </div>

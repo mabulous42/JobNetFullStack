@@ -6,6 +6,7 @@ import NavBar from '../NavBar'
 import ContentContainer from '../ContentContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../Functions/GetData'
+import Banner from '../Banner'
 
 function EmployerDashboard() {
     const navigate = useNavigate()
@@ -16,7 +17,7 @@ function EmployerDashboard() {
 
     console.log(UserDetails);
 
-   
+
     // localStorage.setItem("user", JSON.stringify(UserDetails))
 
     // let getCU = JSON.parse(localStorage.getItem("user")) || [];
@@ -38,13 +39,14 @@ function EmployerDashboard() {
                         <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
                     </Link>}
             />
+            <Banner />
             <SideBar
                 dashboardStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
                 PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
             />
             <ContentContainer
                 employerDashboard={
-                    <div className='mt-4'>
+                    <div>
                         <h1 className='mb-4'>Dashboard</h1>
                         <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly parent-box'>
                             <div className='box shadow bg-white mb-2 p-2 px-3'>

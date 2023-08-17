@@ -123,27 +123,28 @@ code {
 }
 
 .sidebar{
-  top: 0;
+  top: 4.7rem;
   width: 16rem;
-  height: 100vh;
+  height: 87.5vh;
+  background-color: rgb(43,43,43);
 }
 
 .search-input{
   width: 15rem;
   padding-left: 2rem;
   outline: none;
+  border: 1px solid rgb(36,64,52);
 }
 
 .navbar{
-  margin-left: 19.5rem;
-  margin-right: 2rem;
-  background-color: rgb(212, 216, 215);
-  /* background-color: rgb(124, 155, 167); */
+  background-color: white;
 }
 
 .content-container{
-  margin-left: 16rem;
-  height: 100vh;
+  left: 16rem;
+  height: 87.5vh;
+  top: 4.7rem;
+  position: absolute;
 }
 
 .post-a-job-btn{
@@ -160,10 +161,29 @@ code {
 }
 
 .inner-content-div{
-  border-radius: 4rem 0 0 4rem;
-  padding: 6rem 3.5rem;
   /* background-color: rgb(124, 155, 167); */
   background-color: rgb(212, 216, 215);
+}
+
+.banner-div{
+  background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(./image/banner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3rem;
+  /* background-position: center; */
+  top: 4.7rem;
+  position: fixed;
+  left: 16rem;
+  /* z-index: -1; */
+}
+
+.cover-banner{
+  background-color: rgba(0, 0, 0, 0);
+  height: 8.6rem;
+}
+
+.new-div{
+  padding: 0 3.5rem;
 }
 
 .search-icon-div{
@@ -171,7 +191,7 @@ code {
 }
 
 .logo-div{
-  width: 70%;
+  width: 15rem;
 }
 
 .profile-picture-div{
@@ -330,9 +350,6 @@ button{
     border-radius: 0;
   }
 
-  .navbar{
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 991px) {

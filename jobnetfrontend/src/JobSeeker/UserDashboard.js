@@ -108,7 +108,7 @@ function UserDashboard() {
                                     </div>
                                 </div>
                                 <div className='mt-3'>
-                                    <h6 className='me-1'>Skills: </h6>
+                                    <h6 className='me-1'>Required Skills: </h6>
                                     <div className='d-flex flex-wrap'>
                                         {
                                             jobs.requiredSkills.map((skill, i) => (
