@@ -46,14 +46,15 @@ userSchema.pre("save", function (next) {
 // Employer Posted Jobs Schema
 const postedJobsSchema = new mongoose.Schema({
     jobTitle: {type: String},
-    email: {type: String, unique:true},
+    email: {type: String},
     jobDescription: {type: String},
     date: {type: String},
     salaryType:{type: String},
     min_salary: {type: Number, trim:true},
     max_salary:{type: Number, trim:true},
     jobType:{type: String},
-    requiredSkills:{type: []}
+    requiredSkills:{type: []},
+    author: {type: String}
 })
 
 const employerModel = mongoose.models.employer_tbs || mongoose.model("employer_tbs", employerSchema)//creating an employer table with an instance of the schema

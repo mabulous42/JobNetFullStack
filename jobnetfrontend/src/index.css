@@ -105,7 +105,7 @@ code {
 
 /* Add this CSS to your main stylesheet or create a new CSS file */
 .skill-button {
-  background-color: #36D7B7;
+  background-color: rgb(0,175,239);
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -115,7 +115,7 @@ code {
 }
 
 .skill-button.selected {
-  background-color: #269c8f; /* A deeper color for selected skills */
+  background-color: rgb(10, 117, 156); /* A deeper color for selected skills */
 }
 
 .skill-page{
@@ -125,8 +125,9 @@ code {
 .sidebar{
   top: 4.7rem;
   width: 16rem;
-  height: 87.5vh;
-  background-color: rgb(43,43,43);
+  height: 88.5vh;
+  background-color: rgb(55,52,53);
+  color: white;
 }
 
 .search-input{
@@ -138,13 +139,16 @@ code {
 
 .navbar{
   background-color: white;
+  background-color: rgb(212, 216, 215); 
 }
 
 .content-container{
   left: 16rem;
-  height: 87.5vh;
+  height: 88.5vh;
   top: 4.7rem;
   position: absolute;
+  width: 81.2%;
+
 }
 
 .post-a-job-btn{
@@ -162,7 +166,8 @@ code {
 
 .inner-content-div{
   /* background-color: rgb(124, 155, 167); */
-  background-color: rgb(212, 216, 215);
+  background-color: rgb(212, 216, 215); 
+  background-color: white;
 }
 
 .banner-div{
@@ -173,13 +178,18 @@ code {
   /* background-position: center; */
   top: 4.7rem;
   position: fixed;
-  left: 16rem;
+  /* left: 16rem; */
   /* z-index: -1; */
 }
 
 .cover-banner{
-  background-color: rgba(0, 0, 0, 0);
-  height: 8.6rem;
+  background-color: rgba(0, 0, 0, 0.178);
+  height: 9rem;
+  padding: 3.5rem;
+}
+
+.cover-banner h6{
+  font-size: 26px;
 }
 
 .new-div{
@@ -222,8 +232,13 @@ button{
 }
 
 .side-menu-div{
-  width: 80%;
+  /* width: 80%; */
 }
+
+.side-menu-div button{
+  color: white;
+}
+
 
 .side-menu-div h5{
   font-size: 17px;
@@ -233,12 +248,18 @@ button{
   width: 1.5rem;
 }
 
+.employer-dashboard-text{
+  color: rgb(0,175,239);
+}
+
 .dashboard{
   background-color: rgb(0,175,239);
 }
 
 .side-menu-btn:hover{
-  color: green;
+  color: rgb(0,175,239);
+  background-color: rgb(85, 81, 82);
+  /* background-color: red; */
 }
 
 .parent-box{
@@ -246,18 +267,23 @@ button{
 }
 
 .box{
-  width: 14.5rem;
-  border-radius: 2rem;
-  /* width: 24%; */
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 20px 10px;
+  border-radius: 4px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  flex: 1 1 calc(20% - 30px);
+  /* flex: 0 0 calc(20% - 20px); */
+  /* height: auto; */
+  cursor: default;
+  transition: 0.3s;
 }
 
 .box h1{
-  font-size: 28px;
+  font-size: 38px;
 }
 
-.box p{
-  font-size: 18px;
-}
 
 .icn-div{
   background-color: rgb(0,175,239);
@@ -343,7 +369,8 @@ button{
   }
 
   .content-container{
-    margin-left: 0;
+    left: 0;
+    width: 100%;
   }
 
   .inner-content-div{
@@ -382,8 +409,8 @@ button{
   }
 
   .box{
-    border-radius: 1rem;
-    width: 10.5rem;
+    /* border-radius: 1rem; */
+    /* width: 10.5rem; */
   }
 
   .box h1{
@@ -393,11 +420,15 @@ button{
   .box p{
     font-size: 16px;
   }
+
+  .content-container{
+    width: 77%;
+  }
 }
 
 @media (max-width: 1080px) {
   .box{
-    width: 9.5rem;
+    /* width: 9.5rem; */
   }
 }
 

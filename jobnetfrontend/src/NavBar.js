@@ -11,6 +11,9 @@ function NavBar(props) {
                             <img src={require("./image/jnn.png")} alt="" className='w-75' />
                         </div>
                     </Link>
+                    <div>
+                        <p>{props.userName}</p>
+                    </div>
                     <div className='d-flex'>
                         <div className='position-relative me-3 d-flex align-items-center justify-content-center'>
                             <input className='search-input rounded-pill py-2' placeholder='Search here...' type="text" name="" id="" />

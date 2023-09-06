@@ -1,0 +1,158 @@
+import React, { useEffect, useState } from 'react'
+import NavBar from '../NavBar'
+import Banner from '../Banner'
+import UserSidebar from './UserSidebar'
+import ContentContainer from '../ContentContainer'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as yup from "yup"
+
+function ApplyForJob() {
+  const jobID = JSON.parse(localStorage.getItem("JobID"))
+  const navigate = useNavigate()
+
+  const [currentJob, setcurrentJob] = useState("")
+  //fetching all the posted jobs from the database
+  useEffect(() => {
+    const uri = "http://localhost:5353/users/allJobs"
+    axios.get(uri).then((res) => {
+      console.log(res);
+      let postJobs = res.data
+      console.log(postJobs);
+      let found = postJobs.find((job) => job._id === jobID)
+      console.log(found);
+      setcurrentJob(found)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }, [])
+
+  const onSubmit = (values, errors) => {
+    if (values.password !== values.confirmPassword) {
+      alert("Password does not matched")
+      return
+    } else {
+      const uri = "http://localhost:5353/users/"
+      axios.post(uri, values).then((res) => {
+        let userData = values;
+        console.log(res);
+        // navigate(`/user/userDashboard`)
+      }).catch((err) => {
+        console.log(err);
+        alert(err.response.data.message)
+      })
+    }
+
+  }
+
+  const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      userEmail: ""
+    },
+    validationSchema: yup.object().shape({
+      firstName: yup.string()
+        .min(2, "first name is too short")
+        .max(50, "first name is too long")
+        .required("first name cannot be empty")
+        .matches(/^[a-zA-Z0-9]+$/, "first Name should not contain special characters"),
+      lastName: yup.string()
+        .min(2, "last name is too short")
+        .max(50, "last name is too long")
+        .required("last name cannot be empty")
+        .matches(/^[a-zA-Z0-9]+$/, "last Name should not contain special characters"),
+      userEmail: yup.string()
+        .email()
+        .required("Email cannot be empty")
+    }),
+    onSubmit
+  })
+
+  return (
+    <>
+      <NavBar
+        userName="Abbas"
+      />
+
+      <Banner />
+
+      <UserSidebar
+        dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
+        PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
+      />
+
+      <ContentContainer
+        pageName="Job Details"
+        Arrow="‣"
+        pageDirectory="Job details"
+
+        postJob={
+          <div className='mx-auto w-75'>
+            <div className='text-center'>
+              <h1>{currentJob.jobTitle}</h1>
+              <p>{currentJob.jobDescription}</p>
+            </div>
+            <div>
+              <h5>About Company: </h5>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum vero quo, odio neque, sapiente praesentium ut commodi porro atque earum dignissimos provident sunt nam quaerat libero magnam eius placeat.
+                Officiis itaque molestiae vel sit nisi placeat, provident voluptatem? Esse obcaecati voluptatem natus id delectus impedit sapiente fuga nostrum velit consequuntur quia at rem, quidem ratione accusamus iusto. Explicabo, minus.
+                Nostrum dicta voluptatibus deserunt, consequatur saepe, aperiam amet quas culpa incidunt sequi neque nam fuga. Mollitia nemo vero voluptates itaque, magnam perspiciatis modi unde eligendi. Consequuntur quibusdam ducimus architecto mollitia.
+                Aliquam dolorum reprehenderit veniam sunt perspiciatis? Cumque nesciunt molestias dolores minima! Ipsam aspernatur, soluta, officia in quae est expedita mollitia illum qui animi corrupti ullam voluptate exercitationem nobis repellat praesentium?
+                Illo ab ex eos amet atque, sed iusto. Atque ex itaque nam quos optio veritatis ipsa labore nemo provident praesentium, illo vitae dolor corrupti! Illo nobis deserunt ducimus fugit mollitia.</p>
+            </div>
+            <div>
+              <form action="" onSubmit={handleSubmit}>
+                <div className='py-2'>
+                  <label htmlFor="">First Name: </label>
+                  <input type="text" onBlur={handleBlur} value={values.firstName} onChange={handleChange} name="firstName" className='form-control' />
+                  {touched.firstName && errors.firstName &&
+                    <small className='text-danger fw-bold'>{errors.firstName}</small>
+                  }
+                </div>
+
+                <div className='py-2'>
+                  <label htmlFor="">Last Name: </label>
+                  <input type="text" onBlur={handleBlur} value={values.lastName} onChange={handleChange} name="lastName" className='form-control' />
+                  {touched.lastName && errors.lastName &&
+                    <small className='text-danger fw-bold'>{errors.lastName}</small>
+                  }
+                </div>
+
+                <div className='py-2'>
+                  <label htmlFor="">Email: </label>
+                  <input type="text" onBlur={handleBlur} value={values.userEmail} onChange={handleChange} name="userEmail" className='form-control' />
+                  {touched.userEmail && errors.userEmail &&
+                    <small className='text-danger fw-bold'>{errors.userEmail}</small>
+                  }
+                </div>
+                <div className='py-2'>
+                  <label htmlFor="">Upload CV: </label>
+                  <input type="file" name="" id="" className='form-control w-50' />
+                </div>
+
+                <div className='d-flex align-items-center'>
+                  <div className='py-2'>
+                    <button className='btn btn-success' type='submit'>Submit Application</button>
+                  </div>
+
+                  <div className='ms-4'>
+                    <button className='btn border-success'>Back</button>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+
+
+          </div>
+        }
+      />
+
+    </>
+  )
+}
+
+export default ApplyForJob

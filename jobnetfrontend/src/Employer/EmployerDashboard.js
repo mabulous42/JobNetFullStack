@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import SideBar from '../SideBar'
+import SideBar from './SideBar'
 import NavBar from '../NavBar'
 import ContentContainer from '../ContentContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from '../Functions/GetData'
+import { getEmployer } from '../Functions/GetData'
 import Banner from '../Banner'
 
 function EmployerDashboard() {
@@ -24,7 +24,7 @@ function EmployerDashboard() {
     // console.log(getCU.employerName);
 
     useEffect(() => {
-        getUser(dispatch)
+        getEmployer(dispatch)
     }, [])
 
     const signOut = () => {
@@ -41,55 +41,86 @@ function EmployerDashboard() {
             />
             <Banner />
             <SideBar
-                dashboardStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
-                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
+                dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
+                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
             />
             <ContentContainer
+                pageName="Dashboard"
                 employerDashboard={
                     <div>
-                        <h1 className='mb-4'>Dashboard</h1>
-                        <div className='mt-3 mb-5 d-flex align-items-center justify-content-evenly parent-box'>
-                            <div className='box shadow bg-white mb-2 p-2 px-3'>
-                                <div className='d-flex align-items-center justify-content-between'>
-                                    <div>
-                                        <h1>1.7k+</h1>
-                                        <p className='text-muted'>Total Visitor</p>
-                                    </div>
-                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                        <i class="bi bi-pencil-square fs-4"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='box shadow bg-white mb-2 p-2 px-3'>
-                                <div className='d-flex align-items-center justify-content-between'>
-                                    <div>
-                                        <h1>100</h1>
-                                        <p className='text-muted'>Posted Jobs</p>
-                                    </div>
-                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                        <i class="bi bi-pencil-square fs-4"></i>
+                        <div className='py-5 mb-5 d-flex align-items-center justify-content-evenly parent-box'>
+                            <div className='box bg-white mb-2'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='w-100 mx-auto'>
+                                        <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
+                                            <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                                <i class="bi bi-pencil-square fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div className='text-center w-100 box-text'>
+                                            <h1 className='mb-0'>1502</h1>
+                                            <h6 className='text-center text-muted'>Total Visitor</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box shadow bg-white mb-2 p-2 px-3'>
-                                <div className='d-flex align-items-center justify-content-between'>
-                                    <div>
-                                        <h1>1</h1>
-                                        <p className='text-muted'>Applied Jobs</p>
-                                    </div>
-                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                        <i class="bi bi-bookmarks fs-4"></i>
+                            <div className='box bg-white mb-2'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='w-100 mx-auto'>
+                                        <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
+                                            <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                                <i class="bi bi-pencil-square fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div className='text-center w-100 box-text'>
+                                            <h1 className='mb-0'>1502</h1>
+                                            <h6 className='text-center text-muted'>Posted Jobs</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box shadow bg-white mb-2 p-2 px-3'>
-                                <div className='d-flex align-items-center justify-content-between'>
-                                    <div>
-                                        <h1>2.5k+</h1>
-                                        <p className='text-muted'>Views</p>
+                            <div className='box bg-white mb-2'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='w-100 mx-auto'>
+                                        <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
+                                            <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                            <i class="bi bi-bookmarks fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div className='text-center w-100 box-text'>
+                                            <h1 className='mb-0'>1502</h1>
+                                            <h6 className='text-center text-muted'>Applied Jobs</h6>
+                                        </div>
                                     </div>
-                                    <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                        <i class="bi bi-eye fs-4"></i>
+                                </div>
+                            </div>
+                            <div className='box bg-white mb-2'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='w-100 mx-auto'>
+                                        <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
+                                            <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                            <i class="bi bi-eye fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div className='text-center w-100 box-text'>
+                                            <h1 className='mb-0'>1502</h1>
+                                            <h6 className='text-center text-muted'>Views</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box bg-white mb-2'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='w-100 mx-auto'>
+                                        <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
+                                            <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
+                                                <i class="bi bi-pencil-square fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div className='text-center w-100 box-text'>
+                                            <h1 className='mb-0'>1502</h1>
+                                            <h6 className='text-center text-muted'>Favourite Jobs</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

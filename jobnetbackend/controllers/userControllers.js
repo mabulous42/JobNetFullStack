@@ -149,9 +149,9 @@ const allEmployer = async (req, res, next) => {
 }
 
 const jobs = async (req, res, next) => {
-    const {jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, email} = req.body;
+    const {jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, author, email} = req.body;
     let date = DateTimeDisplay()
-    console.log(jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, email, date);
+    console.log(jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, email, author, date);
     try {
         const newPostedJobs = new postedJobsModel({
             jobTitle,
@@ -162,7 +162,8 @@ const jobs = async (req, res, next) => {
             min_salary,
             max_salary,
             jobType,
-            requiredSkills
+            requiredSkills,
+            author
         })
         const result = await newPostedJobs.save()
         console.log(result)

@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import NavBar from '../NavBar'
-import SideBar from '../SideBar'
+import SideBar from './SideBar'
 import ContentContainer from '../ContentContainer'
 import SelectSkill from '../JobSeeker/SelectSkill'
 import programmingSkills from '../SkillsApi'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import Banner from '../Banner'
 
 function PostJob() {
     const skillsList = programmingSkills
@@ -20,7 +21,7 @@ function PostJob() {
     let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
-    const [email, setemail] = useState("")
+    const [currentEmployer, setcurrentEmployer] = useState("")
 
     const [selectedJobType, setselectedJobType] = useState("")
     const [selectedSalaryType, setselectedSalaryType] = useState("")
@@ -33,7 +34,7 @@ function PostJob() {
             }
         }).then((res) => {
             console.log(res);
-            setemail(res.data.email)
+            setcurrentEmployer(res.data)
         }).catch((err) => {
             console.log(err)
             alert("Session Timeout")
@@ -85,10 +86,11 @@ function PostJob() {
             max_salary: values.max_salary,
             jobType: selectedJobType,
             requiredSkills: selectedSkills,
-            email: email
+            email: currentEmployer.email,
+            author: currentEmployer.employerName
         }
 
-        // let data = {postedJobDetails, email}
+        // let data = {postedJobDetails, currentEmployer}
 
         // console.log(data);
 
@@ -138,16 +140,19 @@ function PostJob() {
                         <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
                     </Link>}
             />
+            <Banner />
             <SideBar
-                dashboardStyle='side-menu-btn d-flex align-items-center w-100 px-2 py-3 rounded'
-                PostJobStyle='dashboard text-white d-flex align-items-center w-100 px-2 py-3 rounded'
+                dashboardStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
+                PostJobStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
             />
             <ContentContainer
+                pageName="Post a Job"
+                Arrow = "‣"
+                pageDirectory = "Post a Job"
                 postJob=
                 {
                     <div>
-                        <h1 className='fs-2 mb-4 my-3'>Post a New Job</h1>
-                        <form action="" onSubmit={handleSubmit}>
+                        <form action="" onSubmit={handleSubmit} className='pt-5'>
                             <div className='shadow bg-white p-5 rounded-4 mb-5'>
                                 <h4 className='job-text mb-3'>Job Details</h4>
                                 <div className='mt-4'>
@@ -221,7 +226,7 @@ function PostJob() {
                             </div>
                             <div className='d-flex'>
                                 <div className='me-3'>
-                                    <button disabled={isSelected} className="btn btn-dark rounded-pill px-5 py-2">Next</button>
+                                    <button disabled={isSelected} className="btn btn-dark rounded-pill px-5 py-2">Post Job</button>
                                 </div>
                                 <div>
                                     <Link to={"/employerDashboard"}>
