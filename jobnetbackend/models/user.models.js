@@ -6,7 +6,8 @@ const employerSchema = new mongoose.Schema({
     employerName: {type: String, required: true, trim:true, unique:true},
     email: {type: String, unique:true, required: true, trim:true},
     password: {type: String, required: true, trim: true},
-    date: {type: String, required: true}
+    date: {type: String, required: true},
+    inbox: {type: []}
 })
 
 // User schema

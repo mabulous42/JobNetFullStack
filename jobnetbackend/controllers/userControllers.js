@@ -184,9 +184,22 @@ const allJobs = async (req, res, next) => {
     }
 }
 
+const employerInbox = async (req, res, next) => {
+    console.log(req.body);
+    try {
+        const {inbox, email} = req.body;
+        console.log(inbox, email);
+        const update = await employerModel.findOneAndUpdate({email:email}, {$set:{inbox: inbox}});
+        console.log("updated: " +update);
+        return res.status(201).send({ message: "Application Submitted Successfully", status: true })
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = { 
     registerAsEmployer, registerAsUser, userLogin, 
     employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, 
-    employerDashboard, jobs, allJobs 
+    employerDashboard, jobs, allJobs, employerInbox 
 }
