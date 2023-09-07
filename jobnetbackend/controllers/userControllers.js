@@ -26,7 +26,7 @@ const registerAsEmployer = async (req, res, next) => {
 }
 
 const registerAsUser = async (req, res, next) => {
-    let {userName, email, password, skills } = req.body
+    let { userName, email, password, skills } = req.body
     let date = DateTimeDisplay()
     try {
         const newUser = new userModel({
@@ -91,10 +91,10 @@ const employerLogin = async (req, res, next) => {
 const updateUserSkill = async (req, res, next) => {
     console.log(req.body);
     try {
-        const {skills, email} = req.body;
+        const { skills, email } = req.body;
         console.log(skills, email);
-        const update = await userModel.findOneAndUpdate({email:email}, {$set:{skills: skills}});
-        console.log("updated: " +update);
+        const update = await userModel.findOneAndUpdate({ email: email }, { $set: { skills: skills } });
+        console.log("updated: " + update);
         return res.status(201).send({ message: "Items Updated Successful", status: true })
     } catch (error) {
         next(error)
@@ -104,7 +104,7 @@ const updateUserSkill = async (req, res, next) => {
 
 const userDashboard = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1]        
+        const token = req.headers.authorization.split(" ")[1]
         const email = verifyToken(token)
         console.log(email)
         const user = await userModel.findOne({ email: email })
@@ -117,7 +117,7 @@ const userDashboard = async (req, res, next) => {
 
 const employerDashboard = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1]        
+        const token = req.headers.authorization.split(" ")[1]
         const email = verifyToken(token)
         console.log(email)
         const user = await employerModel.findOne({ email: email })
@@ -130,7 +130,7 @@ const employerDashboard = async (req, res, next) => {
 
 const allUsers = async (req, res, next) => {
     try {
-        const users = await userModel.find({}, { email: 1, password: 1})
+        const users = await userModel.find({}, { email: 1, password: 1 })
         console.log(users)
         res.status(200).send(users)
     } catch (error) {
@@ -140,7 +140,7 @@ const allUsers = async (req, res, next) => {
 
 const allEmployer = async (req, res, next) => {
     try {
-        const users = await employerModel.find({}, { email: 1, password: 1})
+        const users = await employerModel.find({}, { email: 1, password: 1 })
         console.log(users)
         res.status(200).send(users)
     } catch (error) {
@@ -149,7 +149,7 @@ const allEmployer = async (req, res, next) => {
 }
 
 const jobs = async (req, res, next) => {
-    const {jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, author, email} = req.body;
+    const { jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, author, email } = req.body;
     let date = DateTimeDisplay()
     console.log(jobTitle, jobDescription, salaryType, min_salary, max_salary, jobType, requiredSkills, email, author, date);
     try {
@@ -163,7 +163,8 @@ const jobs = async (req, res, next) => {
             max_salary,
             jobType,
             requiredSkills,
-            author
+            author,
+            jobResponse
         })
         const result = await newPostedJobs.save()
         console.log(result)
@@ -187,10 +188,43 @@ const allJobs = async (req, res, next) => {
 const employerInbox = async (req, res, next) => {
     console.log(req.body);
     try {
-        const {inbox, email} = req.body;
-        console.log(inbox, email);
-        const update = await employerModel.findOneAndUpdate({email:email}, {$set:{inbox: inbox}});
-        console.log("updated: " +update);
+        const { sender, message, _id } = req.body;
+        console.log(sender, message, _id);
+
+        const employer = await employerModel.findById({ _id: _id });
+        if (!employer) {
+            return res.status(404).json({ error: 'Employer not found' });
+        }
+
+        // Initialize the inbox field correctly
+        employer.inbox = {
+            readMsg: [],
+            unreadMsg: [],
+        };
+
+        // Add the message to the inbox
+        employer.inbox.unreadMsg.push({
+            sender,
+            message,
+            timestamp: new Date(),
+        });
+
+        // Save the updated employer document
+        await employer.save();
+        return res.status(201).send({ message: "Application Submitted Successfully", status: true });
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+const jobResponse = async (req, res, next) => {
+    console.log(req.body);
+    try {
+        const { employeeDetails, email } = req.body;
+        console.log(employeeDetails, email);
+        const update = await employerModel.findOneAndUpdate({ email: email }, { $set: { employeeDetails: employeeDetails } });
+        console.log("updated: " + update);
         return res.status(201).send({ message: "Application Submitted Successfully", status: true })
     } catch (error) {
         next(error)
@@ -198,8 +232,8 @@ const employerInbox = async (req, res, next) => {
 }
 
 
-module.exports = { 
-    registerAsEmployer, registerAsUser, userLogin, 
-    employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer, 
-    employerDashboard, jobs, allJobs, employerInbox 
+module.exports = {
+    registerAsEmployer, registerAsUser, userLogin,
+    employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer,
+    employerDashboard, jobs, allJobs, employerInbox
 }
