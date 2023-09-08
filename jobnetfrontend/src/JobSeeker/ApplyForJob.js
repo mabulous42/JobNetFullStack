@@ -133,7 +133,7 @@ function ApplyForJob() {
                 Illo ab ex eos amet atque, sed iusto. Atque ex itaque nam quos optio veritatis ipsa labore nemo provident praesentium, illo vitae dolor corrupti! Illo nobis deserunt ducimus fugit mollitia.</p>
             </div>
             <div>
-              {/* <form action="" onSubmit={handleSubmit}>
+              <form action="" onSubmit={handleSubmit}>
                 <div className='py-2'>
                   <label htmlFor="">First Name: </label>
                   <input type="text" onBlur={handleBlur} value={values.firstName} onChange={handleChange} name="firstName" className='form-control' />
@@ -158,8 +158,26 @@ function ApplyForJob() {
                   }
                 </div>
                 <div className='py-2'>
-                  <label htmlFor="">Upload CV: </label>
-                  <input type="file" name="" id="" className='form-control w-50' />
+                  <div>
+                    <label htmlFor="">Upload CV: </label>
+                    <div className='d-flex'>
+                      <div className='w-50 me-2'>
+                        <input type="file" name="" id="" className='form-control w-100' onChange={(e) => uploadCV(e)} accept=".pdf, .docx" />
+                      </div>
+                      {
+                        isUpload ?
+                          null :
+                          <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
+                      }
+                    </div>
+                    <div>
+                      {
+                        response ?
+                          <h6 className='text-success'>{response.message}</h6> :
+                          null
+                      }
+                    </div>
+                  </div>
                 </div>
 
                 <div className='d-flex align-items-center'>
@@ -172,29 +190,9 @@ function ApplyForJob() {
                   </div>
                 </div>
 
-              </form> */}
-              <div className='py-2'>
-                <div>
-                  <label htmlFor="">Upload CV: </label>
-                  <div className='d-flex'>
-                    <div className='w-50 me-2'>
-                      <input type="file" name="" id="" className='form-control w-100' onChange={(e) => uploadCV(e)} accept=".pdf, .docx"/>
-                    </div>
-                    {
-                      isUpload ?
-                      null :
-                      <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
-                    }
-                  </div>
-                  <div>
-                    {
-                      response ?
-                      <h6 className='text-success'>{response.message}</h6> :
-                      null
-                    }
-                  </div>
-                </div>
-              </div>
+              </form>
+
+
 
             </div>
 
