@@ -231,9 +231,23 @@ const jobResponse = async (req, res, next) => {
     }
 }
 
+const uploadCV = async (req, res) => {
+    try {
+        const { cv } = req.body;
+        console.log(cv);
+        const result = await cloudinary.uploader.upload(cv)
+        const publicId = result.public_id
+        const cvUrl = result.secure_url
+        return res.status(201).send({message: "CV uploaded successfully", url: cvUrl})
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+}
+
 
 module.exports = {
     registerAsEmployer, registerAsUser, userLogin,
     employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer,
-    employerDashboard, jobs, allJobs, employerInbox
+    employerDashboard, jobs, allJobs, employerInbox, uploadCV
 }

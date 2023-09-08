@@ -70,6 +70,34 @@ function ApplyForJob() {
     onSubmit
   })
 
+  const [file, setfile] = useState("")
+  const [response, setresponse] = useState("")
+
+  const uploadCV = (e) => {
+    const file = e.target.files[0]
+    console.log(file);
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      const result = reader.result
+      setfile(result)
+    }
+
+  }
+
+  const uploadFileURL = () => {
+    console.log(file);
+    const uri = "http://localhost:5353/users/uploadCV"
+    const data = { cv: file }
+    axios.post(uri, data).then((res) => {
+      console.log(res);
+      setresponse(res.data.url)
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   return (
     <>
       <NavBar
@@ -103,7 +131,7 @@ function ApplyForJob() {
                 Illo ab ex eos amet atque, sed iusto. Atque ex itaque nam quos optio veritatis ipsa labore nemo provident praesentium, illo vitae dolor corrupti! Illo nobis deserunt ducimus fugit mollitia.</p>
             </div>
             <div>
-              <form action="" onSubmit={handleSubmit}>
+              {/* <form action="" onSubmit={handleSubmit}>
                 <div className='py-2'>
                   <label htmlFor="">First Name: </label>
                   <input type="text" onBlur={handleBlur} value={values.firstName} onChange={handleChange} name="firstName" className='form-control' />
@@ -142,7 +170,18 @@ function ApplyForJob() {
                   </div>
                 </div>
 
-              </form>
+              </form> */}
+              <div className='py-2'>
+                <div>
+                  <label htmlFor="">Upload CV: </label>
+                  <div className='d-flex'>
+                    <div className='w-50 me-2'>
+                      <input type="file" name="" id="" className='form-control w-100' onChange={(e) => uploadCV(e)} />
+                    </div>
+                    <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
+                  </div>
+                </div>
+              </div>
 
             </div>
 
