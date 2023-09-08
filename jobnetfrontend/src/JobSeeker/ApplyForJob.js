@@ -72,6 +72,7 @@ function ApplyForJob() {
 
   const [file, setfile] = useState("")
   const [response, setresponse] = useState("")
+  const [isUpload, setisUpload] = useState(true)
 
   const uploadCV = (e) => {
     const file = e.target.files[0]
@@ -80,9 +81,9 @@ function ApplyForJob() {
     reader.readAsDataURL(file)
     reader.onload = () => {
       const result = reader.result
+      setisUpload(false)
       setfile(result)
     }
-
   }
 
   const uploadFileURL = () => {
@@ -91,12 +92,13 @@ function ApplyForJob() {
     const data = { cv: file }
     axios.post(uri, data).then((res) => {
       console.log(res);
-      setresponse(res.data.url)
+      setresponse(res.data)
       console.log(response);
     }).catch((error) => {
       console.log(error);
     })
   }
+
 
   return (
     <>
@@ -176,9 +178,20 @@ function ApplyForJob() {
                   <label htmlFor="">Upload CV: </label>
                   <div className='d-flex'>
                     <div className='w-50 me-2'>
-                      <input type="file" name="" id="" className='form-control w-100' onChange={(e) => uploadCV(e)} />
+                      <input type="file" name="" id="" className='form-control w-100' onChange={(e) => uploadCV(e)} accept=".pdf, .docx"/>
                     </div>
-                    <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
+                    {
+                      isUpload ?
+                      null :
+                      <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
+                    }
+                  </div>
+                  <div>
+                    {
+                      response ?
+                      <h6 className='text-success'>{response.message}</h6> :
+                      null
+                    }
                   </div>
                 </div>
               </div>

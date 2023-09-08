@@ -3,6 +3,7 @@ const bcryptjs = require("bcryptjs")
 const { generateToken, verifyToken } = require("../services/sessions")
 const { sendMessage } = require("../utilities/mailer")
 const { DateTimeDisplay } = require("../utilities/dateAndTime")
+const { cloudinary } = require("../config/cloudinaryConfig")
 
 
 const registerAsEmployer = async (req, res, next) => {
@@ -231,14 +232,14 @@ const jobResponse = async (req, res, next) => {
     }
 }
 
-const uploadCV = async (req, res) => {
+const uploadCV = async (req, res, next) => {
     try {
         const { cv } = req.body;
         console.log(cv);
         const result = await cloudinary.uploader.upload(cv)
         const publicId = result.public_id
         const cvUrl = result.secure_url
-        return res.status(201).send({message: "CV uploaded successfully", url: cvUrl})
+        return res.status(201).send({message: "CV uploaded successfully...", url: cvUrl})
     } catch (error) {
         console.log(error);
         next(error)
