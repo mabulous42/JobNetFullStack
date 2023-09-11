@@ -237,6 +237,7 @@ const uploadCV = async (req, res, next) => {
         const { cv } = req.body;
         console.log(cv);
         const result = await cloudinary.uploader.upload(cv)
+        console.log(result);
         const publicId = result.public_id
         const cvUrl = result.secure_url
         return res.status(201).send({message: "CV uploaded successfully...", url: cvUrl})

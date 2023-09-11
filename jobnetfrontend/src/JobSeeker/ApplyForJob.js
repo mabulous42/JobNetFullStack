@@ -72,7 +72,8 @@ function ApplyForJob() {
 
   const [file, setfile] = useState("")
   const [response, setresponse] = useState("")
-  const [isUpload, setisUpload] = useState(true)
+  const [isUpload, setisUpload] = useState(false)
+  const [submitApplication, setsubmitApplication] = useState(true)
 
   const uploadCV = (e) => {
     const file = e.target.files[0]
@@ -81,7 +82,7 @@ function ApplyForJob() {
     reader.readAsDataURL(file)
     reader.onload = () => {
       const result = reader.result
-      setisUpload(false)
+      setisUpload(true)
       setfile(result)
     }
   }
@@ -94,6 +95,7 @@ function ApplyForJob() {
       console.log(res);
       setresponse(res.data)
       console.log(response);
+      setsubmitApplication(false)
     }).catch((error) => {
       console.log(error);
     })
@@ -166,14 +168,17 @@ function ApplyForJob() {
                       </div>
                       {
                         isUpload ?
-                          null :
-                          <button className='btn btn-primary' onClick={uploadFileURL}>Upload</button>
+                          <div className='btn btn-primary' type='submit' onClick={uploadFileURL}>Upload</div>
+                          :
+                          null
                       }
                     </div>
                     <div>
                       {
-                        response ?
-                          <h6 className='text-success'>{response.message}</h6> :
+                        response
+                          ?
+                          <h6 className='text-success'>{response.message}</h6>                          
+                          :
                           null
                       }
                     </div>
@@ -182,7 +187,7 @@ function ApplyForJob() {
 
                 <div className='d-flex align-items-center'>
                   <div className='py-2'>
-                    <button className='btn btn-success' type='submit'>Submit Application</button>
+                    <button disabled={submitApplication} className='btn btn-success' type='submit'>Submit Application</button>
                   </div>
 
                   <div className='ms-4'>
