@@ -55,6 +55,7 @@ function UserDashboard() {
     const getJobID = (id) => {
         console.log(id);
         localStorage.setItem("JobID", JSON.stringify(id))
+        localStorage.setItem("CU", JSON.stringify(currentUser));
     }
 
 

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 function UserSidebar(props) {
 
-    const [isDrop, setisDrop] = useState(false)
+  const [isDrop, setisDrop] = useState(false)
 
   const dropdown = () => {
     setisDrop(!isDrop)
@@ -27,14 +27,19 @@ function UserSidebar(props) {
     }).catch((err) => {
       console.log(err)
       alert("Session Timeout")
+      localStorage.removeItem("token")
+      localStorage.removeItem("CU")
+      localStorage.removeItem("JobID")
       navigate("/userLogin")
     })
   }, [])
 
-    const signOut = () => {
-        localStorage.removeItem("token")
-        navigate("/userLogin")
-      }
+  const signOut = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("CU")
+    localStorage.removeItem("JobID")
+    navigate("/userLogin")
+  }
 
   return (
     <>

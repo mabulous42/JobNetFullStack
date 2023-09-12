@@ -10,6 +10,7 @@ import * as yup from "yup"
 
 function ApplyForJob() {
   const jobID = JSON.parse(localStorage.getItem("JobID"))
+  const currentUser = JSON.parse(localStorage.getItem("CU"))
   const navigate = useNavigate()
 
   const [currentJob, setcurrentJob] = useState("")
@@ -27,48 +28,6 @@ function ApplyForJob() {
       console.log(err)
     })
   }, [])
-
-  const onSubmit = (values, errors) => {
-    if (values.password !== values.confirmPassword) {
-      alert("Password does not matched")
-      return
-    } else {
-      const uri = "http://localhost:5353/users/"
-      axios.post(uri, values).then((res) => {
-        let userData = values;
-        console.log(res);
-        // navigate(`/user/userDashboard`)
-      }).catch((err) => {
-        console.log(err);
-        alert(err.response.data.message)
-      })
-    }
-
-  }
-
-  const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
-    initialValues: {
-      firstName: "",
-      lastName: "",
-      userEmail: ""
-    },
-    validationSchema: yup.object().shape({
-      firstName: yup.string()
-        .min(2, "first name is too short")
-        .max(50, "first name is too long")
-        .required("first name cannot be empty")
-        .matches(/^[a-zA-Z0-9]+$/, "first Name should not contain special characters"),
-      lastName: yup.string()
-        .min(2, "last name is too short")
-        .max(50, "last name is too long")
-        .required("last name cannot be empty")
-        .matches(/^[a-zA-Z0-9]+$/, "last Name should not contain special characters"),
-      userEmail: yup.string()
-        .email()
-        .required("Email cannot be empty")
-    }),
-    onSubmit
-  })
 
   const [file, setfile] = useState("")
   const [response, setresponse] = useState("")
@@ -100,6 +59,46 @@ function ApplyForJob() {
       console.log(error);
     })
   }
+
+  const onSubmit = (values, errors) => {
+    const cv_url = response.url;
+    const userEmail = currentUser.email
+    const { firstName, lastName } = values;
+    const data = { firstName, lastName, userEmail, cv_url, jobID }
+    console.log(data);
+    const uri = "http://localhost:5353/users/submitApplication"
+    axios.post(uri, data).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+      alert(err.response.data.message)
+    })
+  }
+
+  const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: ""
+    },
+    validationSchema: yup.object().shape({
+      firstName: yup.string()
+        .min(2, "first name is too short")
+        .max(50, "first name is too long")
+        .required("first name cannot be empty")
+        .matches(/^[a-zA-Z0-9]+$/, "first Name should not contain special characters"),
+      lastName: yup.string()
+        .min(2, "last name is too short")
+        .max(50, "last name is too long")
+        .required("last name cannot be empty")
+        .matches(/^[a-zA-Z0-9]+$/, "last Name should not contain special characters"),
+      userEmail: yup.string()
+        .email()
+        .required("Email cannot be empty")
+    }),
+    onSubmit
+  })
+
+
 
 
   return (
@@ -154,7 +153,7 @@ function ApplyForJob() {
 
                 <div className='py-2'>
                   <label htmlFor="">Email: </label>
-                  <input type="text" onBlur={handleBlur} value={values.userEmail} onChange={handleChange} name="userEmail" className='form-control' />
+                  <input type="text" onBlur={handleBlur}  value={currentUser.email} onChange={handleChange} name="userEmail" className='form-control' />
                   {touched.userEmail && errors.userEmail &&
                     <small className='text-danger fw-bold'>{errors.userEmail}</small>
                   }
@@ -177,7 +176,7 @@ function ApplyForJob() {
                       {
                         response
                           ?
-                          <h6 className='text-success'>{response.message}</h6>                          
+                          <h6 className='text-success'>{response.message}</h6>
                           :
                           null
                       }
