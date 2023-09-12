@@ -58,6 +58,26 @@ function UserDashboard() {
         localStorage.setItem("CU", JSON.stringify(currentUser));
     }
 
+    function getTimeDifference(timestamp) {
+        const now = new Date();
+        const jobTime = new Date(timestamp);
+        const timeDifference = now - jobTime;
+        const seconds = Math.floor(timeDifference / 1000);
+      
+        if (seconds < 60) {
+          return 'just now';
+        } else if (seconds < 3600) {
+          const minutes = Math.floor(seconds / 60);
+          return `${minutes} min${minutes > 1 ? 's' : ''} ago`;
+        } else if (seconds < 86400) {
+          const hours = Math.floor(seconds / 3600);
+          return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+        } else {
+          // Handle longer time periods here if needed
+          return 'a while ago';
+        }
+      }
+
 
     return (
         <>
@@ -77,8 +97,7 @@ function UserDashboard() {
                             {
                                 allJobs
                                     .slice() // Create a shallow copy of the array before sorting
-                                    .sort((a, b) => new Date(b.date.replace(/ at .*$/, '')) - new Date(a.date.replace(/ at .*$/, ''))) // Sort by date in descending order
-
+                                    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)) // Sort by timestamp in descending order
                                     .map((jobs, index) => (
                                         <div className='px-3 jobs-div w-75 job-display-div' key={index}>
                                             <div className='bg-white shadow px-4 py-4 rounded mb-1 w-100' >
@@ -107,7 +126,7 @@ function UserDashboard() {
                                                             <div className='me-1'>
                                                                 <i className="bi bi-calendar2"></i>
                                                             </div>
-                                                            <div>{jobs.date}</div>
+                                                            <div>{getTimeDifference(jobs.timestamp)}</div>
                                                         </div>
                                                     </div>
                                                     <div>

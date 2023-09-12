@@ -90,10 +90,6 @@ function PostJob() {
             author: currentEmployer.employerName
         }
 
-        // let data = {postedJobDetails, currentEmployer}
-
-        // console.log(data);
-
         console.log(postedJobDetails);
         if (selectedJobType === "" || selectedSalaryType === "") {
             alert("Make sure all the field is filled")
@@ -226,11 +222,11 @@ function PostJob() {
                             </div>
                             <div className='d-flex'>
                                 <div className='me-3'>
-                                    <button disabled={isSelected} className="btn btn-dark rounded-pill px-5 py-2">Post Job</button>
+                                    <button disabled={isSelected} type='submit' className="btn btn-dark rounded-pill px-5 py-2">Post Job</button>
                                 </div>
                                 <div>
                                     <Link to={"/employerDashboard"}>
-                                        <button type='submit' className="py-2 cancel-btn">Cancel</button>
+                                        <button className="py-2 cancel-btn">Cancel</button>
                                     </Link>
                                 </div>
                             </div>

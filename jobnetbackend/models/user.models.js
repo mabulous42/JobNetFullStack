@@ -71,16 +71,7 @@ const postedJobsSchema = new mongoose.Schema({
     max_salary: { type: Number, trim: true },
     jobType: { type: String },
     requiredSkills: { type: [] },
-    author: { type: String },
-    jobResponse: {
-        type: [{
-            firstName: { type: String },
-            lastName: { type: String },
-            userEmail: { type: String, unique: true },
-            cv_url: { type: String },
-            timestamp: { type: String },
-        }]
-    }
+    author: { type: String }
 })
 
 // Submitted Application for Job Schema

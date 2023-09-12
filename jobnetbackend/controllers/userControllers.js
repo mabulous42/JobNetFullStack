@@ -15,7 +15,7 @@ const registerAsEmployer = async (req, res, next) => {
             employerName,
             email,
             password,
-            dtimestamp: new Date()
+            timestamp: new Date()
         })
         const result = await newUser.save()
         console.log(result)
@@ -85,7 +85,7 @@ const employerLogin = async (req, res, next) => {
             return res.status(401).send({ message: "Invalid password", status: false })
         }
         const token = generateToken(email);
-        return res.status(200).send({ message: `Welcome ${user.userName}`, status: true, token })
+        return res.status(200).send({ message: `Welcome ${user.employerName}`, status: true, token })
     } catch (error) {
         next(error)
     }
@@ -166,8 +166,7 @@ const jobs = async (req, res, next) => {
             max_salary,
             jobType,
             requiredSkills,
-            author,
-            jobResponse
+            author
         })
         const result = await newPostedJobs.save()
         console.log(result)
@@ -239,7 +238,7 @@ const submitApplication = async (req, res, next) => {
         const { firstName, lastName, userEmail, cv_url, jobID } = req.body
         console.log(firstName, lastName, userEmail, cv_url, jobID);
 
-        //adding new submitted application to jobResponse field
+        //creating new submitted application
         const newApplication = new jobApplicationsModel({
             firstName,
             lastName,

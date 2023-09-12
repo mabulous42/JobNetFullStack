@@ -26,11 +26,7 @@ function EmployerDashboard() {
     useEffect(() => {
         getEmployer(dispatch)
     }, [])
-
-    const signOut = () => {
-        localStorage.removeItem("token")
-        navigate("/employerLogin")
-    }
+    
     return (
         <>
             <NavBar
