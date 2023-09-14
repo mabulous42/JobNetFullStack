@@ -177,6 +177,8 @@ const jobs = async (req, res, next) => {
     }
 }
 
+// this controller fetch (get request) all the posted job and send 
+// to the frontend whenever it is being requested for
 const allJobs = async (req, res, next) => {
     try {
         const jobs = await postedJobsModel.find({})
@@ -187,6 +189,8 @@ const allJobs = async (req, res, next) => {
     }
 }
 
+// this controller notifies (post request) the employer each time there 
+// is a response regarding its Job post from the job seeker
 const employerInbox = async (req, res, next) => {
     console.log(req.body);
     try {
@@ -219,6 +223,8 @@ const employerInbox = async (req, res, next) => {
     }
 }
 
+// this controller saves (post request) the job seeker CV to cloudinary
+// and return to the user a link in which the CV can be accessed
 const uploadCV = async (req, res, next) => {
     try {
         const { cv } = req.body;
@@ -232,6 +238,8 @@ const uploadCV = async (req, res, next) => {
     }
 }
 
+// this controller saves (post request) all the submitted job application by 
+// the job seeker in a new table
 const submitApplication = async (req, res, next) => {
     console.log(req.body);
     try {
@@ -260,9 +268,24 @@ const submitApplication = async (req, res, next) => {
     }
 }
 
+// this controller checks all the posted jobs and returns all
+// jobs posted by a particular employer using the email to find
+const employerJobs = async (req, res, next) => {
+    try {
+        const email = req.params.email;
+        console.log(email);
+        const jobs = await postedJobsModel.find({email: email});
+        res.status(200).send(jobs);
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+}
+
 
 module.exports = {
     registerAsEmployer, registerAsUser, userLogin,
     employerLogin, updateUserSkill, userDashboard, allUsers, allEmployer,
-    employerDashboard, jobs, allJobs, employerInbox, uploadCV, submitApplication
+    employerDashboard, jobs, allJobs, employerInbox, uploadCV, submitApplication,
+    employerJobs
 }

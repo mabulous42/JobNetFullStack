@@ -90,10 +90,7 @@ function ApplyForJob() {
         .min(2, "last name is too short")
         .max(50, "last name is too long")
         .required("last name cannot be empty")
-        .matches(/^[a-zA-Z0-9]+$/, "last Name should not contain special characters"),
-      userEmail: yup.string()
-        .email()
-        .required("Email cannot be empty")
+        .matches(/^[a-zA-Z0-9]+$/, "last Name should not contain special characters")
     }),
     onSubmit
   })
@@ -153,10 +150,7 @@ function ApplyForJob() {
 
                 <div className='py-2'>
                   <label htmlFor="">Email: </label>
-                  <input type="text" onBlur={handleBlur}  value={currentUser.email} onChange={handleChange} name="userEmail" className='form-control' />
-                  {touched.userEmail && errors.userEmail &&
-                    <small className='text-danger fw-bold'>{errors.userEmail}</small>
-                  }
+                  <input type="email"  value={currentUser.email}  name="" className='form-control' />                  
                 </div>
                 <div className='py-2'>
                   <div>
@@ -190,7 +184,7 @@ function ApplyForJob() {
                   </div>
 
                   <div className='ms-4'>
-                    <button className='btn border-success'>Back</button>
+                    <div className='btn border-success'>Back</div>
                   </div>
                 </div>
 

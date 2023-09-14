@@ -7,6 +7,7 @@ import ContentContainer from '../ContentContainer'
 import NavBar from '../NavBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../Functions/GetData'
+import { timeDifference } from '../Functions/GetTimeDifference'
 
 function UserDashboard() {
     const userToken = JSON.parse(localStorage.getItem("token"))
@@ -41,6 +42,8 @@ function UserDashboard() {
             let postJobs = res.data
             console.log(postJobs);
             console.log(currentUser.skills);
+            // filtering the job based on the current user skills, 
+            // only job that includes the current user skill should display
             const filteredJobs = postJobs.filter(job =>
                 currentUser.skills.some(skill => job.requiredSkills.includes(skill))
             );
@@ -54,29 +57,12 @@ function UserDashboard() {
 
     const getJobID = (id) => {
         console.log(id);
+        console.log(currentUser);
         localStorage.setItem("JobID", JSON.stringify(id))
         localStorage.setItem("CU", JSON.stringify(currentUser));
     }
 
-    function getTimeDifference(timestamp) {
-        const now = new Date();
-        const jobTime = new Date(timestamp);
-        const timeDifference = now - jobTime;
-        const seconds = Math.floor(timeDifference / 1000);
-      
-        if (seconds < 60) {
-          return 'just now';
-        } else if (seconds < 3600) {
-          const minutes = Math.floor(seconds / 60);
-          return `${minutes} min${minutes > 1 ? 's' : ''} ago`;
-        } else if (seconds < 86400) {
-          const hours = Math.floor(seconds / 3600);
-          return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-        } else {
-          // Handle longer time periods here if needed
-          return 'a while ago';
-        }
-      }
+
 
 
     return (
@@ -100,7 +86,7 @@ function UserDashboard() {
                                     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)) // Sort by timestamp in descending order
                                     .map((jobs, index) => (
                                         <div className='px-3 jobs-div w-75 job-display-div' key={index}>
-                                            <div className='bg-white shadow px-4 py-4 rounded mb-1 w-100' >
+                                            <div className='bg-white shadow px-4 py-4 rounded mb-1 w-100'>
                                                 <div className='d-flex mb-2'>
                                                     <h5 className='me-3 job-desc-text'>{jobs.author}</h5>
                                                     <div className=''>
@@ -126,7 +112,7 @@ function UserDashboard() {
                                                             <div className='me-1'>
                                                                 <i className="bi bi-calendar2"></i>
                                                             </div>
-                                                            <div>{getTimeDifference(jobs.timestamp)}</div>
+                                                            <div>{timeDifference(jobs.timestamp)}</div>
                                                         </div>
                                                     </div>
                                                     <div>
@@ -151,7 +137,7 @@ function UserDashboard() {
                                                     </div>
                                                     <Link to={"/applyJob"}>
                                                         <div className='mt-3 text-end'>
-                                                            <button className="btn btn-dark" onClick={()=>getJobID(jobs._id)}>VIEW JOB DETAILS</button>
+                                                            <button className="btn btn-dark" onClick={() => getJobID(jobs._id)}>VIEW JOB DETAILS</button>
                                                         </div>
                                                     </Link>
                                                 </div>

@@ -83,6 +83,22 @@ function SideBar(props) {
             </div>
             <h5 className='mt-1 ms-3'>My Profile</h5>
           </button>
+          <Link to={"/postJob"} className='link'>
+            <button className={props.PostJobStyle}>
+              <div className='dashboard-icon-div'>
+                <i class="bi bi-pencil fs-4"></i>
+              </div>
+              <h5 className='mt-1 ms-3'>Post a Job</h5>
+            </button>
+          </Link>
+          <Link to={"/manage_jobs"} className='link'>
+          <button className={props.manageJobsStyle}>
+            <div className='dashboard-icon-div'>
+              <i class="bi bi-bell fs-4"></i>
+            </div>
+            <h5 className='mt-1 ms-3'>Manage Jobs</h5>
+          </button>
+          </Link>
           <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
             <div className='dashboard-icon-div'>
               <i class="bi bi-journal fs-4"></i>
@@ -94,20 +110,6 @@ function SideBar(props) {
               <i class="bi bi-envelope fs-4"></i>
             </div>
             <h5 className='mt-1 ms-3'>Messages</h5>
-          </button>
-          <Link to={"/postJob"} className='link'>
-            <button className={props.PostJobStyle}>
-              <div className='dashboard-icon-div'>
-                <i class="bi bi-pencil fs-4"></i>
-              </div>
-              <h5 className='mt-1 ms-3'>Post a Job</h5>
-            </button>
-          </Link>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
-            <div className='dashboard-icon-div'>
-              <i class="bi bi-bell fs-4"></i>
-            </div>
-            <h5 className='mt-1 ms-3'>Job Alert</h5>
           </button>
           <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
             <div className='dashboard-icon-div'>

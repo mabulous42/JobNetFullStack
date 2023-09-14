@@ -9,6 +9,7 @@ import EmployerDashboard from './Employer/EmployerDashboard';
 import EmployerLogin from './Employer/EmployerLogin';
 import PostJob from './Employer/PostJob';
 import ApplyForJob from './JobSeeker/ApplyForJob';
+import ManageJobs from './Employer/ManageJobs';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/employerDashboard' element={<EmployerDashboard />} />
         <Route path='/postJob' element={<PostJob />} />
         <Route path='/applyJob' element={<ApplyForJob />} />
+        <Route path='/manage_jobs' element={<ManageJobs />} />
       </Routes>
     </>
   );
