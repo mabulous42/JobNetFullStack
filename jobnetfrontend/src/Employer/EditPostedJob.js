@@ -1,22 +1,33 @@
-import axios from 'axios'
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import NavBar from '../NavBar'
-import SideBar from './SideBar'
-import ContentContainer from '../ContentContainer'
-import SelectSkill from '../JobSeeker/SelectSkill'
-import programmingSkills from '../SkillsApi'
-import { useFormik } from 'formik'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import programmingSkills from '../SkillsApi';
+import { useFormik } from 'formik';
 import * as yup from 'yup'
-import Banner from '../Banner'
+import NavBar from '../NavBar';
+import Banner from '../Banner';
+import SideBar from './SideBar';
+import ContentContainer from '../ContentContainer';
+import axios from 'axios';
 
-function PostJob() {
+function EditPostedJob() {
+    let editJobID = JSON.parse(localStorage.getItem("EditJobID"))
+
     const skillsList = programmingSkills
-    const [selectedSkills, setSelectedSkills] = useState([]);
-
+    const [selectedSkills, setSelectedSkills] = useState(['HTML', 'CSS']);
     const [isSelected, setisSelected] = useState(true)
+
+    
+
+    useEffect(() => {
+        if (selectedSkills.length === 0) {
+            setisSelected(true);
+        } else {
+            setisSelected(false);
+        }
+        console.log(isSelected);
+    }, [selectedSkills]);
+    
+
 
     let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
@@ -25,22 +36,6 @@ function PostJob() {
 
     const [selectedJobType, setselectedJobType] = useState("")
     const [selectedSalaryType, setselectedSalaryType] = useState("")
-
-    useEffect(() => {
-        const uri = "http://localhost:5353/users/employerDashboard"
-        axios.get(uri, {
-            headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-        }).then((res) => {
-            console.log(res);
-            setcurrentEmployer(res.data)
-        }).catch((err) => {
-            console.log(err)
-            alert("Session Timeout")
-            navigate("/employerLogin")
-        })
-    }, [])
 
     const handleSkillClick = (e, skill) => {
         e.preventDefault()
@@ -56,7 +51,7 @@ function PostJob() {
                 // If the skill is already selected, remove it from the list
                 return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
             } else {
-                console.log("Selected: "+Number(selectedSkills.length + 1));
+                console.log("Selected: " + Number(selectedSkills.length + 1));
                 if (selectedSkills.length + 1 >= 1) {
                     setisSelected(false)
                 }
@@ -121,6 +116,10 @@ function PostJob() {
         onSubmit
     })
 
+    const showSkill = () => {
+        console.log(selectedSkills);
+    }
+
     return (
         <>
             <NavBar
@@ -131,14 +130,16 @@ function PostJob() {
             />
             <Banner />
             <SideBar
-                dashboardStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                manageJobsStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                PostJobStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
+                manageJobsStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
+                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
+                dashboardStyle="side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded"
             />
             <ContentContainer
-                pageName="Post a Job"
-                Arrow = "‣"
-                pageDirectory = "Post a Job"
+                pageName="Edit Job"
+                Arrow="‣"
+                pageDirectory="Manage Job"
+                Arrow2="‣"
+                pageDirectory2="Edit"
                 postJob=
                 {
                     <div>
@@ -225,6 +226,7 @@ function PostJob() {
                                 </div>
                             </div>
                         </form>
+                        <button onClick={showSkill} className='btn border-dark'>Show selected skill</button>
                     </div>
                 }
             />
@@ -232,4 +234,4 @@ function PostJob() {
     )
 }
 
-export default PostJob
+export default EditPostedJob

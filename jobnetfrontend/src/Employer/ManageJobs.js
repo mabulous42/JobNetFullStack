@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getEmployer } from '../Functions/GetData';
 import NavBar from '../NavBar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Banner from '../Banner';
 import SideBar from './SideBar';
 import ContentContainer from '../ContentContainer';
@@ -11,6 +11,7 @@ import { timeDifference } from '../Functions/GetTimeDifference';
 
 function ManageJobs() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [currentEmployer, setcurrentEmployer] = useState("")
 
@@ -46,9 +47,15 @@ function ManageJobs() {
         }).catch((err) => {
             console.log(err)
         })
-    }, [currentEmployer])
+    }, [])
 
-    
+    const edit = (id) => {
+        console.log(id);
+        localStorage.setItem("EditJobID", JSON.stringify(id))
+        navigate("/manage_jobs/edit_job")
+    }
+
+
 
     return (
         <>
@@ -78,8 +85,16 @@ function ManageJobs() {
                                     .map((jobs, index) => (
                                         <div className='px-3 jobs-div w-75 job-display-div' key={index}>
                                             <div className='bg-white shadow px-4 py-4 rounded mb-1 w-100' >
-                                                <div className='d-flex mb-2'>
-                                                    <h5 className='me-3 job-desc-text'>{jobs.jobTitle}</h5>
+                                                <div className='d-flex mb-2 justify-content-between'>
+                                                    <div className='d-flex bg-white px-2 me-3 rounded'>
+                                                        <div className='me-1'>
+                                                            <i className="bi bi-bag-check"></i>
+                                                        </div>
+                                                        <div className='jobTitle-text'>
+                                                            <h5>{jobs.jobTitle}</h5>
+
+                                                        </div>
+                                                    </div>
                                                     <div className=''>
                                                         <div className='d-flex align-items-center justify-content-center job-type text-primary px-2 rounded'>
                                                             <div className='me-1'>
@@ -89,24 +104,32 @@ function ManageJobs() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='d-flex mb-2'>
+                                                <div className='mb-2'>
                                                     <div>
-                                                        <div className='d-flex shadow bg-white px-2 me-3 rounded'>
+                                                        <div className='d-flex bg-white px-2 me-3 rounded-sm'>
                                                             <div className='me-1'>
-                                                                <i className="bi bi-bag-check"></i>
+                                                                <i class="bi bi-clock"></i>
                                                             </div>
-                                                            <div className='jobTitle-text'>{jobs.jobTitle}</div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='d-flex shadow bg-white px-2 me-3 rounded-sm'>
-                                                            <div className='me-1'>
-                                                                <i className="bi bi-calendar2"></i>
-                                                            </div>
+                                                            <p className='me-1'>Posted:</p>
                                                             <div>{timeDifference(jobs.timestamp)}</div>
                                                         </div>
                                                     </div>
-
+                                                </div>
+                                                <div className='d-flex mb-2 justify-content-between'>
+                                                    <div className='d-flex justify-content-evenly'>
+                                                        <div className='me-3'>
+                                                            <button onClick={()=>edit(jobs._id)} className="btn btn-primary">EDIT</button>
+                                                        </div>
+                                                        <div className='me-3'>
+                                                            <button className="btn btn-dark">DELETE</button>
+                                                        </div>
+                                                        <div>
+                                                            <button className="btn btn-primary">CLOSE JOB</button>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6 className='btn border-primary'>Response(0)</h6>
+                                                    </div>
                                                 </div>
 
                                             </div>

@@ -12,7 +12,9 @@ function ContentContainer(props) {
             <p className='me-2'>‣</p>
             <p className='me-2'>Dashboard</p>
             <p className='me-2'>{props.Arrow}</p>
-            <p>{props.pageDirectory}</p>
+            <p className='me-2'>{props.pageDirectory}</p>
+            <p className='me-2'>{props.Arrow2}</p>
+            <p>{props.pageDirectory2}</p>
           </div>
         </div>
         <div className='inner-content-div py-5'>
