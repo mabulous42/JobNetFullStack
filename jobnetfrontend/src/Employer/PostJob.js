@@ -56,7 +56,7 @@ function PostJob() {
                 // If the skill is already selected, remove it from the list
                 return prevSelectedSkills.filter((selectedSkill) => selectedSkill !== skill);
             } else {
-                console.log("Selected: "+Number(selectedSkills.length + 1));
+                console.log("Selected: " + Number(selectedSkills.length + 1));
                 if (selectedSkills.length + 1 >= 1) {
                     setisSelected(false)
                 }
@@ -73,29 +73,25 @@ function PostJob() {
         let postedJobDetails = {
             jobTitle: values.jobTitle,
             jobDescription: values.jobDescription,
-            salaryType: selectedSalaryType,
+            salaryType: values.selectedSalaryType,
             min_salary: values.min_salary,
             max_salary: values.max_salary,
-            jobType: selectedJobType,
+            jobType: values.selectedJobType,
             requiredSkills: selectedSkills,
             email: currentEmployer.email,
             author: currentEmployer.employerName
         }
 
         console.log(postedJobDetails);
-        if (selectedJobType === "" || selectedSalaryType === "") {
-            alert("Make sure all the field is filled")
-        } else {
-            const uri = "http://localhost:5353/users/jobs"
-            axios.post(uri, postedJobDetails).then((res) => {
-                console.log(res);
-                alert(res.data.message)
-                navigate("/employerDashboard")
-            }).catch((err) => {
-                console.log(err);
-                alert(err.response.data.message)
-            })
-        }
+        const uri = "http://localhost:5353/users/jobs"
+        axios.post(uri, postedJobDetails).then((res) => {
+            console.log(res);
+            alert(res.data.message)
+            navigate("/employerDashboard")
+        }).catch((err) => {
+            console.log(err);
+            alert(err.response.data.message)
+        })
     }
 
     const { handleSubmit, handleChange, errors, touched, handleBlur, values } = useFormik({
@@ -103,7 +99,9 @@ function PostJob() {
             jobTitle: "",
             jobDescription: "",
             min_salary: "",
-            max_salary: ""
+            max_salary: "",
+            selectedJobType: "",
+            selectedSalaryType: ""
         },
         validationSchema: yup.object().shape({
             jobTitle: yup.string()
@@ -116,7 +114,11 @@ function PostJob() {
             min_salary: yup.number()
                 .required("This field cannot be empty"),
             max_salary: yup.number()
-                .required("This field cannot be empty")
+                .required("This field cannot be empty"),
+            selectedJobType: yup.string()
+                .required('Please select a job type'),
+            selectedSalaryType: yup.string()
+                .required('Please select a salary type')
         }),
         onSubmit
     })
@@ -137,8 +139,8 @@ function PostJob() {
             />
             <ContentContainer
                 pageName="Post a Job"
-                Arrow = "‣"
-                pageDirectory = "Post a Job"
+                Arrow="‣"
+                pageDirectory="Post a Job"
                 postJob=
                 {
                     <div>
@@ -161,23 +163,28 @@ function PostJob() {
                                 </div>
                                 <div className='mt-4 select-container'>
                                     <h6>Job Type</h6>
-                                    <select onChange={(e) => setselectedJobType(e.target.value)} name="" id="" className='w-50 job-input rounded'>
+                                    <select onChange={handleChange} onBlur={handleBlur} value={values.selectedJobType} name="selectedJobType" id="" className='w-50 job-input rounded'>
                                         <option className='form-control' value="" selected disabled>Select</option>
                                         <option className='form-control' value="Full Time">Full Time</option>
                                         <option className='form-control' value="Part Time">Part Time</option>
                                         <option className='form-control' value="Freelance">Freelance</option>
                                     </select>
+                                    {touched.selectedJobType && errors.selectedJobType ? (
+                                        <small className="text-danger fw-bold">{errors.selectedJobType}</small>
+                                    ) : null}
                                 </div>
                                 <div className='mt-4'>
                                     <h6>Salary</h6>
                                     <div className='d-flex'>
                                         <div className='w-50'>
-                                            <select onChange={(e) => setselectedSalaryType(e.target.value)} name="" id="" className='salary job-input rounded w-100'>
+                                            <select onChange={handleChange} onBlur={handleBlur} value={values.selectedSalaryType} name="selectedSalaryType" id="" className='salary job-input rounded w-100'>
                                                 <option className='form-control' value="" selected disabled>Select</option>
                                                 <option className='form-control' value="Monthly">Monthly</option>
                                                 <option className='form-control' value="Weekly">Weekly</option>
                                             </select>
-
+                                            {touched.selectedSalaryType && errors.selectedSalaryType ? (
+                                                <small className="text-danger fw-bold">{errors.selectedSalaryType}</small>
+                                            ) : null}
                                         </div>
                                         <div className='w-25 mx-4'>
                                             <input onBlur={handleBlur} value={values.min_salary} onChange={handleChange} className='w-100 job-input rounded' placeholder='Min' type="text" name="min_salary" id="" />
