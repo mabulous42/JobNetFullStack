@@ -139,15 +139,7 @@ function EmployerDashboard() {
                     </div>
                 }
             />
-            {/* <div className='d-flex align-items-center'>
-                <h1>Welcome to the Employer Dashboard, {currentUser}</h1>
-                <div className='ms-3'>
-                    <button onClick={signOut} className="btn btn-danger">Sign Out</button>
-                </div>
-            </div>
-            <Link to={"/postJob"}>
-                <button className="btn btn-success">Post Job</button>
-            </Link> */}
+            
         </>
     )
 }

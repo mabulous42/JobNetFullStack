@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from '../SpinnerLoader'
+import { router } from '../Router/Router'
 
 function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
     // const [userEmail, setuserEmail] = useState("")
@@ -18,7 +19,7 @@ function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
                 alert("Password does not matched")
                 return
             } else {
-                const uri = "http://localhost:5353/users/registerAsUser"
+                const uri = `${router}/users/registerAsUser`
                 axios.post(uri, values).then((res) => {
                     let userData = values;
                     // setuserEmail(values.email)

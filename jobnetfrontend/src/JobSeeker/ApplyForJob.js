@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as yup from "yup"
+import { router } from '../Router/Router'
 
 function ApplyForJob() {
   const jobID = JSON.parse(localStorage.getItem("JobID"))
@@ -66,7 +67,7 @@ function ApplyForJob() {
     const { firstName, lastName } = values;
     const data = { firstName, lastName, userEmail, cv_url, jobID }
     console.log(data);
-    const uri = "http://localhost:5353/users/submitApplication"
+    const uri = `${router}/users/submitApplication`
     axios.post(uri, data).then((res) => {
       console.log(res);
     }).catch((err) => {

@@ -11,6 +11,7 @@ import programmingSkills from '../SkillsApi'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import Banner from '../Banner'
+import { router } from '../Router/Router'
 
 function PostJob() {
     const skillsList = programmingSkills
@@ -83,7 +84,7 @@ function PostJob() {
         }
 
         console.log(postedJobDetails);
-        const uri = "http://localhost:5353/users/jobs"
+        const uri = `${router}/users/jobs`
         axios.post(uri, postedJobDetails).then((res) => {
             console.log(res);
             alert(res.data.message)

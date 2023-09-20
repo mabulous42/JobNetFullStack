@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
+import { router } from '../Router/Router';
 
 function UserLogin() {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ function UserLogin() {
 
     const onSubmit = (values) => {
         console.log(values);
-        const uri = "http://localhost:5353/users/userLogin"
+        const uri = `${router}/users/userLogin`
         axios.post(uri, values).then((res) => {
             console.log(res);
             localStorage.setItem("token", JSON.stringify(res.data.token))

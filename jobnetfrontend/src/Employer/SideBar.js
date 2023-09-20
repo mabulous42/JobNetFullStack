@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { router } from '../Router/Router'
 
 function SideBar(props) {
   const [isDrop, setisDrop] = useState(false)
@@ -15,7 +16,7 @@ function SideBar(props) {
   const [currentUser, setcurrentUser] = useState("")
 
   useEffect(() => {
-    const uri = "http://localhost:5353/users/employerDashboard"
+    const uri = `${router}/users/employerDashboard`
     axios.get(uri, {
       headers: {
         Authorization: `Bearer ${userToken}`

@@ -8,6 +8,7 @@ import NavBar from '../NavBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../Functions/GetData'
 import { timeDifference } from '../Functions/GetTimeDifference'
+import { router } from '../Router/Router'
 
 function UserDashboard() {
     const userToken = JSON.parse(localStorage.getItem("token"))
@@ -21,11 +22,11 @@ function UserDashboard() {
     const { isFetching, UserDetails, fetchErr } = useSelector((state) => state.CurrentUserSlice);
     console.log(UserDetails);
 
-    useEffect(() => {
-        if (UserDetails) {
-            setcurrentUser(UserDetails)
-        }
-    }, [UserDetails]); // Adding UserDetails as a dependency here
+    // useEffect(() => {
+    //     if (UserDetails) {
+    //         setcurrentUser(UserDetails)
+    //     }
+    // }, [UserDetails]); // Adding UserDetails as a dependency here
 
     // console.log(currentUser.skills);
 
@@ -33,10 +34,16 @@ function UserDashboard() {
         getUser(dispatch);
     }, []);
 
+    
+
+
 
     //fetching all the posted jobs from the database
     useEffect(() => {
-        const uri = "http://localhost:5353/users/allJobs"
+        if (UserDetails) {
+            setcurrentUser(UserDetails)
+        }
+        const uri = `${router}/users/allJobs`
         axios.get(uri).then((res) => {
             console.log(res);
             let postJobs = res.data
@@ -53,7 +60,7 @@ function UserDashboard() {
         }).catch((err) => {
             console.log(err)
         })
-    }, [currentUser.skills])
+    }, [UserDetails])
 
     const getJobID = (id) => {
         console.log(id);

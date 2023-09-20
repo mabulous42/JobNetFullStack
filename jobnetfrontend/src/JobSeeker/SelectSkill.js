@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import programmingSkills from '../SkillsApi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { router } from '../Router/Router';
 
 
 const SelectSkill = () => {
@@ -20,7 +21,7 @@ const SelectSkill = () => {
         let email = userDetails.email
         console.log(email);
         let data = {skills, email}
-        const uri = "http://localhost:5353/users/updateUserSkill"
+        const uri = `${router}/users/updateUserSkill`
         axios.post(uri, data).then((res) => {
             console.log(res);
             alert(res.data.message)  

@@ -8,10 +8,11 @@ import Banner from '../Banner';
 import SideBar from './SideBar';
 import ContentContainer from '../ContentContainer';
 import { timeDifference } from '../Functions/GetTimeDifference';
+import { router } from '../Router/Router';
 
 function ManageJobs() {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [currentEmployer, setcurrentEmployer] = useState("")
 
@@ -23,23 +24,28 @@ function ManageJobs() {
         getEmployer(dispatch)
     }, [])
 
+    // useEffect(() => {
+    //     console.log("UserDetails updated:", UserDetails);
+    //     if (UserDetails) {
+    //         setcurrentEmployer(UserDetails)
+    //     }
+    // }, [UserDetails]); // Adding UserDetails as a dependency here
+
+
+
+
+
+    const [myJobs, setmyJobs] = useState([])
+
+    // //fetching all the posted jobs from the database
     useEffect(() => {
         console.log("UserDetails updated:", UserDetails);
         if (UserDetails) {
             setcurrentEmployer(UserDetails)
         }
-    }, [UserDetails]); // Adding UserDetails as a dependency here
-
-
-
-
-
-    const [myJobs, setmyJobs] = useState("")
-
-    // //fetching all the posted jobs from the database
-    useEffect(() => {
         console.log(currentEmployer);
-        const uri = `http://localhost:5353/users/employerJobs/${currentEmployer.email}`
+        if(currentEmployer){
+            const uri = `${router}/users/employerJobs/${currentEmployer.email}`
         axios.get(uri).then((res) => {
             console.log(res);
             setmyJobs(res.data)
@@ -47,7 +53,9 @@ function ManageJobs() {
         }).catch((err) => {
             console.log(err)
         })
-    }, [])
+        }
+        
+    }, [UserDetails])
 
     const edit = (id) => {
         console.log(id);
