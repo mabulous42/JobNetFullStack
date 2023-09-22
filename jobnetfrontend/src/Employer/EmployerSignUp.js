@@ -6,25 +6,27 @@ import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from '../SpinnerLoader'
 import { router } from '../Router/Router'
 
-function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {
+function EmployerSignUp({ registerAsJobSeeker, loginAsEmployer, setisLoading, isSpinning }) {
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
-        setisLoading(true)
-        setTimeout(() => {
-            setisLoading(false)
-        }, 1990);
+        // setTimeout(() => {
+        //     setisLoading(false)
+        // }, 1990);
         setTimeout(() => {
             if (values.password !== values.confirmPassword) {
                 alert("Password does not matched")
                 return
             } else {
+                setisLoading(true)
                 const uri = `${router}/users/registerAsEmployer`
                 axios.post(uri, values).then((res) => {
                     console.log(res);
                     alert(res.data.message)
+                    setisLoading(false)
                     navigate("/employerLogin")
                 }).catch((err) => {
                     console.log(err);
+                    setisLoading(false)
                     alert(err.response.data.message)
                 })
             }
@@ -101,8 +103,11 @@ function EmployerSignUp({ registerAsJobSeeker, setisLoading, isSpinning }) {
                     <div className='text-center'>
                         <button disabled={!isCheckboxChecked} type="submit" className='btn btn-success'>Create Account</button>
                     </div>
-                    <div>
-                        <small>To register as a Job Seeker, <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>
+                    <div className='d-flex mt-2'>
+                        <small className='mx-auto'>To register as a Job Seeker, <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>
+                    </div>
+                    <div className='d-flex mt-2'>
+                        <small className='mx-auto'>Already have an Account? <span onClick={loginAsEmployer} className='text-primary job-seeker'>Login here</span></small>
                     </div>
                 </form>
                 <div className='position-absolute small-loader w-100'>

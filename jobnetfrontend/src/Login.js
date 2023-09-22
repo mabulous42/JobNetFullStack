@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
-import EmployerSignUp from './Employer/EmployerSignUp'
-import JobSeekerSignUp from './JobSeeker/JobSeekerSignUp'
+import EmployerLogin from './Employer/EmployerLogin'
+import UserLogin from './JobSeeker/UserLogin'
 import Loader from './Loader'
-import { useNavigate } from 'react-router-dom'
 
-
-function SignUp() {
-
-    const navigate = useNavigate()
-
+function Login() {
     const [isVisible, setisVisible] = useState(true)
     const [isLoading, setisLoading] = useState(false)
     const [isSpinning, setisSpinning] = useState(false)
@@ -28,32 +23,21 @@ function SignUp() {
             setisSpinning(!isSpinning)
         }, 1500);
     }
-
-    const loginAsEmployer = () => {
-        setisSpinning(!isSpinning)
-        setTimeout(() => {
-            setisSpinning(!isSpinning)
-            navigate("/employerLogin")
-        }, 1500);
-    }
-
-
-
     return (
         <>
             <div className='body d-flex align-items-center justify-content-center'>
                 <div className='shadow rounded p-4 signup-box'>
                     {isVisible ?
-                        <EmployerSignUp registerAsJobSeeker={registerAsJobSeeker}
+                        <EmployerLogin registerAsJobSeeker={registerAsJobSeeker}
                             setisLoading={setisLoading}
                             isSpinning={isSpinning}
-                            loginAsEmployer={loginAsEmployer}
                         />
-                        : <JobSeekerSignUp registerAsEmployer={registerAsEmployer}
+                        : <UserLogin registerAsEmployer={registerAsEmployer}
                             setisLoading={setisLoading}
                             isSpinning={isSpinning}
                         />}
                 </div>
+            </div>
             {
                 isLoading
                     ?
@@ -63,9 +47,8 @@ function SignUp() {
                     :
                     null
             }
-            </div>
         </>
     )
 }
 
-export default SignUp
+export default Login

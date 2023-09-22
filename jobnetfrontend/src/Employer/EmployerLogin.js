@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import { router } from '../Router/Router';
+import SpinnerLoader from '../SpinnerLoader';
 
 function EmployerLogin() {
     const navigate = useNavigate()
 
+    const [isVisible, setisVisible] = useState(true)
+    const [isLoading, setisLoading] = useState(false)
+    const [isSpinning, setisSpinning] = useState(false)
 
     const onSubmit = (values) => {
         console.log(values);
@@ -37,10 +41,27 @@ function EmployerLogin() {
         }),
         onSubmit
     })
+
+    const loginAsJobSeeker = () => {
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisSpinning(!isSpinning)
+            navigate("/userLogin")
+        }, 1500);
+    }
+
+    const registerAsEmployer = () => {
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisSpinning(!isSpinning)
+            navigate("/")
+        }, 1500);
+    }
+
     return (
         <>
             <div className='body d-flex align-items-center justify-content-center'>
-                <div className='shadow rounded p-4 signup-box'>
+                <div className='shadow rounded p-4 signup-box position-relative'>
                     <form onSubmit={handleSubmit} action="">
                         <h3 className='mx-auto text-muted text-center'>Employer Login</h3>
                         <div className='my-3'>
@@ -58,7 +79,16 @@ function EmployerLogin() {
                         <div className='mx-auto col-4 d-flex align-items-center justify-content-center'>
                             <button type='submit' className="btn btn-primary mx-auto">Sign In</button>
                         </div>
+                        <div className='d-flex mt-2'>
+                            <small className='mx-auto'>To login as Job Seeker, <span onClick={loginAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>
+                        </div>
+                        <div className='d-flex mt-2'>
+                            <small className='mx-auto'>Don't have an Account Yet? <span onClick={registerAsEmployer} className='text-primary job-seeker'>Register here</span></small>
+                        </div>
                     </form>
+                    <div className='position-absolute small-loader w-100'>
+                        {isSpinning ? <SpinnerLoader /> : null}
+                    </div>
                 </div>
             </div>
         </>

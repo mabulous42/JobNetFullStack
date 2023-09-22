@@ -4,8 +4,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import { router } from '../Router/Router';
+import SpinnerLoader from '../SpinnerLoader';
 
-function UserLogin() {
+function UserLogin({ loginAsUser, setisLoading, isSpinning }) {
     const navigate = useNavigate()
 
 
@@ -58,7 +59,13 @@ function UserLogin() {
                         <div className='mx-auto col-4 d-flex align-items-center justify-content-center'>
                             <button type='submit' className="btn btn-primary mx-auto">Sign In</button>
                         </div>
+                        <div>
+                            <small>To register as an Employer, <span onClick={loginAsUser} className='text-success job-seeker'>Click here</span></small>
+                        </div>
                     </form>
+                    <div className='position-absolute small-loader w-100'>
+                        {isSpinning ? <SpinnerLoader /> : null}
+                    </div>
                 </div>
             </div>
         </>
