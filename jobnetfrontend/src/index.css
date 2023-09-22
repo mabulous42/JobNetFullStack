@@ -57,6 +57,37 @@ code {
   animation: pulsate 1.2s ease-in-out infinite;
 }
 
+/* SpinnerLoader.css */
+.spinner-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+.spinner {
+  border: 3px solid black;
+  border-top: 3px solid orangered;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.small-loader{
+  bottom: 0;
+}
+
 @keyframes pulsate {
   0%, 100% {
     transform: scale(1);
@@ -117,9 +148,6 @@ code {
 
 /* -----------------modal loader end------------------------------- */
 
-.small-loader{
-  bottom: 0;
-}
 
 /* Add this CSS to your main stylesheet or create a new CSS file */
 .skill-button {
