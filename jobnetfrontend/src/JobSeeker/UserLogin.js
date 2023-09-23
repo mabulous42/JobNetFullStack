@@ -5,25 +5,28 @@ import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import { router } from '../Router/Router';
 import SpinnerLoader from '../SpinnerLoader';
+import Loader from '../Loader';
 
 function UserLogin() {
     const navigate = useNavigate()
 
     const [isSpinning, setisSpinning] = useState(false)
-
-
+    const [isLoading, setisLoading] = useState(false)
 
     const onSubmit = (values) => {
+        setisLoading(true)
         console.log(values);
         const uri = `${router}/users/userLogin`
         axios.post(uri, values).then((res) => {
             console.log(res);
             localStorage.setItem("token", JSON.stringify(res.data.token))
             alert("Login Successful")
+            setisLoading(false)
             navigate("/jobSeekerDashboard")
         }).catch((err) => {
             console.log(err);
             alert(err.response.data.message)
+            setisLoading(false)
         })
     }
 
@@ -93,6 +96,15 @@ function UserLogin() {
                         {isSpinning ? <SpinnerLoader /> : null}
                     </div>
                 </div>
+                {
+                    isLoading
+                        ?
+                        <div className='position-absolute loader-div w-100 d-flex align-items-center justify-content-center'>
+                            <Loader />
+                        </div>
+                        :
+                        null
+                }
             </div>
         </>
     )

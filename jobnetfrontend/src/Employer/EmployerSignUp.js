@@ -26,8 +26,8 @@ function EmployerSignUp({ registerAsJobSeeker, loginAsEmployer, setisLoading, is
                     navigate("/employerLogin")
                 }).catch((err) => {
                     console.log(err);
-                    setisLoading(false)
                     alert(err.response.data.message)
+                    setisLoading(false)
                 })
             }
         }, 2000);

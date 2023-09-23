@@ -10,26 +10,25 @@ function JobSeekerSignUp({registerAsEmployer, loginAsUser, setisLoading, isSpinn
     // const [userEmail, setuserEmail] = useState("")
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
-        setisLoading(true)
-        setTimeout(() => {
-            setisLoading(false)
-        }, 1990);
         setTimeout(() => {
             if (values.password !== values.confirmPassword) {
                 alert("Password does not matched")
                 return
             } else {
+                setisLoading(true)
                 const uri = `${router}/users/registerAsUser`
                 axios.post(uri, values).then((res) => {
                     let userData = values;
                     // setuserEmail(values.email)
                     console.log(res);
                     localStorage.setItem("userEmail", JSON.stringify(userData))
-                    alert(res.data.message)                    
+                    alert(res.data.message) 
+                    setisLoading(false)                   
                     navigate(`/user/skills`)
                 }).catch((err) => {
                     console.log(err);
                     alert(err.response.data.message)
+                    setisLoading(false)
                 })
             }
         }, 2000);
