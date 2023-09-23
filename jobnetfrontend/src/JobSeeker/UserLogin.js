@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import { router } from '../Router/Router';
 import SpinnerLoader from '../SpinnerLoader';
 
-function UserLogin({ loginAsUser, setisLoading, isSpinning }) {
+function UserLogin() {
     const navigate = useNavigate()
+
+    const [isSpinning, setisSpinning] = useState(false)
+
 
 
     const onSubmit = (values) => {
@@ -38,12 +41,32 @@ function UserLogin({ loginAsUser, setisLoading, isSpinning }) {
         }),
         onSubmit
     })
+
+    const loginAsEmployer = () => {
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisSpinning(!isSpinning)
+            navigate("/employerLogin")
+        }, 1500);
+    }
+
+    const registerAsJobSeeker = () => {
+        setisSpinning(!isSpinning)
+        setTimeout(() => {
+            setisSpinning(!isSpinning)
+            navigate("/")
+        }, 1500);
+    }
+
     return (
         <>
             <div className='body d-flex align-items-center justify-content-center'>
-                <div className='shadow rounded p-4 signup-box'>
+                <div className='shadow rounded p-4 signup-box position-relative'>
+                    <div className='site-logo-div mx-auto'>
+                        <img src={require('../image/jnn.png')} alt="" className='w-100' />
+                    </div>
                     <form onSubmit={handleSubmit} action="">
-                        <h3 className='mx-auto text-muted text-center'>Job Seeker Login</h3>
+                        <h4 className='mx-auto text-muted text-center mt-1'>Login as Job Seeker</h4>
                         <div className='my-3'>
                             <input type="email" onBlur={handleBlur} name='email' value={values.email} onChange={handleChange} placeholder='Email' className={errors.email ? "is-invalid form-control" : "form-control"} />
                             {touched.email && errors.email &&
@@ -59,11 +82,14 @@ function UserLogin({ loginAsUser, setisLoading, isSpinning }) {
                         <div className='mx-auto col-4 d-flex align-items-center justify-content-center'>
                             <button type='submit' className="btn btn-primary mx-auto">Sign In</button>
                         </div>
-                        <div>
-                            <small>To register as an Employer, <span onClick={loginAsUser} className='text-success job-seeker'>Click here</span></small>
+                        <div className='d-flex mt-2'>
+                            <small className='mx-auto'>To login as an Employer, <span onClick={loginAsEmployer} className='text-primary job-seeker'>Click here</span></small>
+                        </div>
+                        <div className='d-flex mt-2'>
+                            <small className='mx-auto no-account-yet'>Don't have an Account Yet? <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Register here</span></small>
                         </div>
                     </form>
-                    <div className='position-absolute small-loader w-100'>
+                    <div className='position-absolute small-loader w-100 start-0'>
                         {isSpinning ? <SpinnerLoader /> : null}
                     </div>
                 </div>

@@ -23,6 +23,14 @@ code {
   height: 100vh;
 }
 
+.register-text{
+  color: rgb(6, 149, 201);
+}
+
+.site-logo-div{
+  width: 65%;
+}
+
 .signup-box{
   width: 26rem;
 }
@@ -38,6 +46,12 @@ code {
 
 .job-seeker{
   cursor: pointer;
+}
+
+.already-have-an-account,
+.no-account-yet {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* CircleLoader3.css */
@@ -67,11 +81,11 @@ code {
 }
 
 .spinner {
-  border: 3px solid black;
-  border-top: 3px solid orangered;
+  border: 5px solid black;
+  border-top: 5px solid rgb(0,175,239);
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 60%;
+  height: 60%;
   animation: spin 1s linear infinite;
 }
 
@@ -100,7 +114,7 @@ code {
   top: 0;
   width: 100vw;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.589);
+  background-color: rgba(255, 255, 255, 0.11);
 }
 /* ------------------modal loader style -----------------*/
 
@@ -114,23 +128,23 @@ code {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.39); /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.158); /* Semi-transparent background */
   z-index: 9999; /* Ensure it's above other content */
 }
 
 .loader img {
-  max-width: 150px; /* Adjust the size of your logo as needed */
-  max-height: 150px;
+  max-width: 15%; /* Adjust the size of your logo as needed */
+  max-height: 15%;
   animation: zoom 0.4s alternate infinite, fade 0.8s alternate infinite; /* Zoom and fade animations */
 }
 
 /* Keyframes for Zooming Animation */
 @keyframes zoom {
   0% {
-      transform: scale(1);
+      transform: scale(0.6);
   }
   100% {
-      transform: scale(1.4); /* Adjust the scaling factor for desired zoom level */
+      transform: scale(1.1); /* Adjust the scaling factor for desired zoom level */
   }
 }
 

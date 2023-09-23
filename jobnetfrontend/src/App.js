@@ -25,11 +25,13 @@ function App() {
         <Route path='/employerDashboard' element={<EmployerDashboard />} />
         <Route path='/postJob' element={<PostJob />} />
         <Route path='/applyJob' element={<ApplyForJob />} />
+        
 
         <Route path='/manage_jobs'>
           <Route index element={<ManageJobs />}></Route>
           <Route path='edit_job' element={<EditPostedJob />} />
         </Route>
+
       </Routes>
     </>
   );

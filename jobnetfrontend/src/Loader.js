@@ -8,7 +8,7 @@ function Loader() {
                 <div className="circle"></div>
             </div> */}
             <div class="loader">
-                <img src={require('./image/jn-1.jpg')} alt="Your Logo" />
+                <img src={require('./image/jn-logo.png')} alt="Your Logo" />
             </div>
         </>
     )

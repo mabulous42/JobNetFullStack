@@ -69,7 +69,7 @@ function EmployerSignUp({ registerAsJobSeeker, loginAsEmployer, setisLoading, is
         <>
             <div className='position-relative'>
                 <form action="" onSubmit={handleSubmit}>
-                    <h4 className='text-center py-2'>Register as an Employer</h4>
+                    <h5 className='register-text text-center py-2'>Register as an Employer</h5>
                     <div className='my-3'>
                         <input type="text" onBlur={handleBlur} value={values.employerName} onChange={handleChange} placeholder='Employer Name' name="employerName" className='form-control' />
                         {touched.employerName && errors.employerName &&
@@ -101,13 +101,13 @@ function EmployerSignUp({ registerAsJobSeeker, loginAsEmployer, setisLoading, is
                         <p className='ms-2 terms'>I agree with JobNet's Terms of Service, Privacy Policy, and default Notification Settings.</p>
                     </div>
                     <div className='text-center'>
-                        <button disabled={!isCheckboxChecked} type="submit" className='btn btn-success'>Create Account</button>
+                        <button disabled={!isCheckboxChecked} type="submit" className='btn btn-dark'>Create Account</button>
                     </div>
                     <div className='d-flex mt-2'>
                         <small className='mx-auto'>To register as a Job Seeker, <span onClick={registerAsJobSeeker} className='text-primary job-seeker'>Click here</span></small>
                     </div>
                     <div className='d-flex mt-2'>
-                        <small className='mx-auto'>Already have an Account? <span onClick={loginAsEmployer} className='text-primary job-seeker'>Login here</span></small>
+                        <small className='mx-auto already-have-an-account'>Already have an Account? <span onClick={loginAsEmployer} className='text-primary job-seeker'>Login here</span></small>
                     </div>
                 </form>
                 <div className='position-absolute small-loader w-100'>

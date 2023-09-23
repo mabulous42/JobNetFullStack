@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from '../SpinnerLoader'
 import { router } from '../Router/Router'
 
-function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
+function JobSeekerSignUp({registerAsEmployer, loginAsUser, setisLoading, isSpinning}) {
     // const [userEmail, setuserEmail] = useState("")
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
@@ -70,7 +70,7 @@ function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
         <>
             <div className='position-relative'>
                 <form action="" onSubmit={handleSubmit}>
-                    <h4 className='text-center py-2'>Register as a Job Seeker</h4>
+                    <h5 className='text-center py-2'>Register as a Job Seeker</h5>
                     <div className='my-3'>
                         <input type="text" onBlur={handleBlur} value={values.userName} onChange={handleChange} placeholder='User Name' name="userName" className='form-control' />
                         {touched.userName && errors.userName &&
@@ -104,8 +104,11 @@ function JobSeekerSignUp({registerAsEmployer, setisLoading, isSpinning}) {
                     <div className='text-center'>
                         <button disabled={!isCheckboxChecked} type="submit" className='btn btn-primary'>Create Account</button>
                     </div>
-                    <div>
-                        <small>To register as an Employer, <span onClick={registerAsEmployer} className='text-success job-seeker'>Click here</span></small>
+                    <div className='d-flex mt-2'>
+                        <small className='mx-auto'>To register as an Employer, <span onClick={registerAsEmployer} className='text-primary job-seeker'>Click here</span></small>
+                    </div>
+                    <div className='d-flex mt-2'>
+                        <small className='mx-auto already-have-an-account'>Already have an Account? <span onClick={loginAsUser} className='text-primary job-seeker'>Login here</span></small>
                     </div>
                 </form>
                 <div className='position-absolute small-loader w-100'>
