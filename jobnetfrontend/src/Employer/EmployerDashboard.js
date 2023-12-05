@@ -29,14 +29,16 @@ function EmployerDashboard() {
                         <button className="post-a-job-btn py-1 px-2 rounded-pill">Post a Job</button>
                     </Link>}
             />
-            <Banner />
-            <SideBar
-                dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
-                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                manageJobsStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-            />
-            <ContentContainer
+            <Banner 
                 pageName="Dashboard"
+            />
+            <SideBar
+                dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-1 rounded'
+                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
+                manageJobsStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
+            />
+
+            <ContentContainer
                 employerDashboard={
                     <div>
                         <div className='parent-box bg-danger'>
@@ -79,7 +81,7 @@ function EmployerDashboard() {
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h4 className='mb-0'>1502</h4>
+                                            <h4 className='mb-0'>15</h4>
                                             <h6 className='text-center text-muted'>Applied Jobs</h6>
                                         </div>
                                     </div>
@@ -116,28 +118,35 @@ function EmployerDashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className='chart-div'>
-                            <div className='bg-white recently-applied-job-div rounded-4'>
-                                <h4 className='px-4 py-2'>Recent Received Applications</h4>
-                                <hr className='mt-0' />
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                                <div>lorem*5</div>
-                            </div>
-                            {/* <div className='profile-view-inner-div'>
-                                <div className='bg-white profile-view-div rounded-4'>
-                                    <h4 className='px-4 py-2'>Profile View</h4>
-                                    <hr className='mt-0' />
-                                    <img src={require("../image/main-graph.png")} alt="" className='w-100 p-5' />
-                                </div>                                
-                            </div> */}
+                        <div className='bg-white recently-applied-job-div'>
+                            <h5 className='py-2'>Recent Received Applications</h5>
+                            <hr className='mt-0' />
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
+                            <div>lorem*5</div>
                         </div>
                     </div>
                 }

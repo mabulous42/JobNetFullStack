@@ -108,8 +108,8 @@ function ApplyForJob() {
       <Banner />
 
       <UserSidebar
-        dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
-        PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
+        dashboardStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-1 rounded'
+        PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
       />
 
       <ContentContainer

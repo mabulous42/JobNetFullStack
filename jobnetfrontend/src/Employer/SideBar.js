@@ -73,68 +73,68 @@ function SideBar(props) {
           <Link to={"/employerDashboard"} className='link'>
             <button className={props.dashboardStyle}>
               <div className='dashboard-icon-div'>
-                <i class="bi bi-ui-checks-grid fs-4"></i>
+                <i class="bi bi-ui-checks-grid fs-5"></i>
               </div>
-              <h5 className='mt-1 ms-3'>Dashboard</h5>
+              <h6 className='mt-1 ms-3'>Dashboard</h6>
             </button>
           </Link>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-person fs-4"></i>
+              <i class="bi bi-person fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>My Profile</h5>
+            <h6 className='mt-1 ms-3'>My Profile</h6>
           </button>
           <Link to={"/postJob"} className='link'>
             <button className={props.PostJobStyle}>
               <div className='dashboard-icon-div'>
-                <i class="bi bi-pencil fs-4"></i>
+                <i class="bi bi-pencil fs-5"></i>
               </div>
-              <h5 className='mt-1 ms-3'>Post a Job</h5>
+              <h6 className='mt-1 ms-3'>Post a Job</h6>
             </button>
           </Link>
           <Link to={"/manage_jobs"} className='link'>
           <button className={props.manageJobsStyle}>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-bell fs-4"></i>
+              <i class="bi bi-bell fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Manage Jobs</h5>
+            <h6 className='mt-1 ms-3'>Manage Jobs</h6>
           </button>
           </Link>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-journal fs-4"></i>
+              <i class="bi bi-journal fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Resume</h5>
+            <h6 className='mt-1 ms-3'>Resume</h6>
           </button>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-envelope fs-4"></i>
+              <i class="bi bi-envelope fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Messages</h5>
+            <h6 className='mt-1 ms-3'>Messages</h6>
           </button>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-bookmark fs-4"></i>
+              <i class="bi bi-bookmark fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Saved Job</h5>
+            <h6 className='mt-1 ms-3'>Saved Job</h6>
           </button>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-gear fs-4"></i>
+              <i class="bi bi-gear fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Account Settings</h5>
+            <h6 className='mt-1 ms-3'>Account Settings</h6>
           </button>
-          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-trash fs-4"></i>
+              <i class="bi bi-trash fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3'>Delete Account</h5>
+            <h6 className='mt-1 ms-3'>Delete Account</h6>
           </button>
-          <button onClick={signOut} className='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'>
+          <button onClick={signOut} className='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'>
             <div className='dashboard-icon-div'>
-              <i class="bi bi-box-arrow-left text-white fs-4"></i>
+              <i class="bi bi-box-arrow-left text-white fs-5"></i>
             </div>
-            <h5 className='mt-1 ms-3 text-white'>Sign Out</h5>
+            <h6 className='mt-1 ms-3 text-white'>Sign Out</h6>
           </button>
         </div>
       </div>

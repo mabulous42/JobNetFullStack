@@ -187,9 +187,9 @@ function EditPostedJob() {
             />
             <Banner />
             <SideBar
-                manageJobsStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
-                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                dashboardStyle="side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded"
+                manageJobsStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-1 rounded'
+                PostJobStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
+                dashboardStyle="side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded"
             />
             <ContentContainer
                 pageName="Edit Job"

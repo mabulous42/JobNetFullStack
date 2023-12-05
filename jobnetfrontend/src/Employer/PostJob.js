@@ -114,9 +114,9 @@ function PostJob() {
             />
             <Banner />
             <SideBar
-                dashboardStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                manageJobsStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-2 rounded'
-                PostJobStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-2 rounded'
+                dashboardStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
+                manageJobsStyle='side-menu-btn d-flex align-items-center w-100 px-4 py-1 rounded'
+                PostJobStyle='dashboard text-dark d-flex align-items-center w-100 px-4 py-1 rounded'
             />
             <ContentContainer
                 pageName="Post a Job"

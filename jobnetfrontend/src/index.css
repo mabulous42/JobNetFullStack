@@ -182,9 +182,9 @@ code {
 }
 
 .sidebar{
-  top: 4.7rem;
+  top: 3rem;
   width: 16rem;
-  height: 88.5vh;
+  height: 92.5vh;
   background-color: rgb(55,52,53);
   color: white;
 }
@@ -217,15 +217,14 @@ code {
 .navbar{
   background-color: rgb(212, 216, 215); 
   height: 3rem;
-  /* padding: 10px 0; */
 }
 
 .content-container{
-  left: 16rem;
-  height: 88.5vh;
-  top: 4.7rem;
+  left: 15.9rem;
+  height: 76.3vh;
+  top: 9.5rem;
   position: absolute;
-  width: 81.2%;
+  width: 81.4%;
 }
 
 @media only screen and (max-width: 1025px) {
@@ -258,18 +257,18 @@ code {
   background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(./image/banner.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 4.5rem;
-  /* background-position: center; */
-  top: 4.7rem;
+  padding: 2.5rem;
+  top: 3rem;
   position: fixed;
-  /* left: 16rem; */
-  /* z-index: -1; */
+  left: 15.9rem;
+  width: 81.4%;
+  z-index: 1000;
 }
 
 .cover-banner{
   background-color: rgba(0, 0, 0, 0.178);
-  height: 9rem;
-  padding: 3.5rem;
+  height: 4rem;
+  padding: 3rem;
 }
 
 @media only screen and (max-width: 670px) {
@@ -297,7 +296,7 @@ code {
 }
 
 .cover-banner h6{
-  font-size: 26px;
+  font-size: 18px;
   align-self: center;
 }
 
@@ -313,10 +312,6 @@ code {
 
   .menu-icon {
     font-size: 2.5rem;
-  }
-
-  .cover-banner {
-    padding: 3.5rem 2rem;
   }
 }
 
@@ -412,7 +407,6 @@ button{
 .side-menu-btn:hover{
   color: rgb(0,175,239);
   background-color: rgb(85, 81, 82);
-  /* background-color: red; */
 }
 
 .parent-box{
@@ -427,7 +421,7 @@ button{
 .box{
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  /* padding: 8px 5px; */
+  padding: 8px 5px;
   border-radius: 4px;
   width: 8rem;
   cursor: default;
@@ -459,17 +453,30 @@ button{
   }
 }
 
-@media only screen and (max-width: 811px) {
+@media only screen and (max-width: 838px) {
+  .box {
+    width: 16rem;
+  }
+}
+
+@media only screen and (max-width: 818px) {
+  .box {
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 758px) {
+  .box {
+    width: 16rem;
+  }
+}
+
+@media only screen and (max-width: 678px) {
   .box {
     width: 15rem;
   }
 }
 
-@media only screen and (max-width: 698px) {
-  .box {
-    /* width: 90%; */
-  }
-}
 
 @media only screen and (max-width: 650px) {
   .box {
