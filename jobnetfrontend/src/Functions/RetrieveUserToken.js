@@ -3,7 +3,6 @@ const retrieveUserToken = () => {
     try {
         // Attempt to retrieve the user token from localStorage
         let userToken = JSON.parse(localStorage.getItem("token"))
-        // const token = localStorage.getItem("userToken");
 
         // If the token is found in localStorage, return it
         if (userToken) {

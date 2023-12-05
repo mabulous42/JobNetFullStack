@@ -16,32 +16,12 @@ import { router } from '../Router/Router'
 function PostJob() {
     const skillsList = programmingSkills
     const [selectedSkills, setSelectedSkills] = useState([]);
-
     const [isSelected, setisSelected] = useState(true)
+    const [currentEmployer, setcurrentEmployer] = useState("")
 
     let userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
-    const [currentEmployer, setcurrentEmployer] = useState("")
-
-    const [selectedJobType, setselectedJobType] = useState("")
-    const [selectedSalaryType, setselectedSalaryType] = useState("")
-
-    useEffect(() => {
-        const uri = "http://localhost:5353/users/employerDashboard"
-        axios.get(uri, {
-            headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-        }).then((res) => {
-            console.log(res);
-            setcurrentEmployer(res.data)
-        }).catch((err) => {
-            console.log(err)
-            alert("Session Timeout")
-            navigate("/employerLogin")
-        })
-    }, [])
 
     const handleSkillClick = (e, skill) => {
         e.preventDefault()
@@ -232,7 +212,7 @@ function PostJob() {
                                     </Link>
                                 </div>
                             </div>
-                        </form>
+                        </form>                        
                     </div>
                 }
             />

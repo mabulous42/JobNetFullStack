@@ -17,12 +17,6 @@ function EmployerDashboard() {
     const { isFetching, UserDetails, fetchErr } = useSelector((state) => state.CurrentUserSlice)
     console.log(UserDetails);
 
-
-    // localStorage.setItem("user", JSON.stringify(UserDetails))
-
-    // let getCU = JSON.parse(localStorage.getItem("user")) || [];
-    // console.log(getCU.employerName);
-
     useEffect(() => {
         getEmployer(dispatch)
     }, [])
@@ -45,7 +39,7 @@ function EmployerDashboard() {
                 pageName="Dashboard"
                 employerDashboard={
                     <div>
-                        <div className='py-5 mb-5 d-flex align-items-center justify-content-evenly parent-box'>
+                        <div className='parent-box'>
                             <div className='box bg-white mb-2'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
@@ -81,7 +75,7 @@ function EmployerDashboard() {
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
                                             <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                            <i class="bi bi-bookmarks fs-4"></i>
+                                                <i class="bi bi-bookmarks fs-4"></i>
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
@@ -96,7 +90,7 @@ function EmployerDashboard() {
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
                                             <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                            <i class="bi bi-eye fs-4"></i>
+                                                <i class="bi bi-eye fs-4"></i>
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
@@ -123,23 +117,32 @@ function EmployerDashboard() {
                             </div>
                         </div>
                         <div className='chart-div'>
-                            <div className='profile-view-inner-div'>
+                            <div className='bg-white recently-applied-job-div rounded-4'>
+                                <h4 className='px-4 py-2'>Recent Received Applications</h4>
+                                <hr className='mt-0' />
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                                <div>lorem*5</div>
+                            </div>
+                            {/* <div className='profile-view-inner-div'>
                                 <div className='bg-white profile-view-div rounded-4'>
                                     <h4 className='px-4 py-2'>Profile View</h4>
                                     <hr className='mt-0' />
                                     <img src={require("../image/main-graph.png")} alt="" className='w-100 p-5' />
-                                </div>
-                                <div className='bg-white recently-applied-job-div rounded-4'>
-                                    <h4 className='px-4 py-2'>Recent Applied Job</h4>
-                                    <hr className='mt-0' />
-                                    <div>lorem*5</div>
-                                </div>
-                            </div>
+                                </div>                                
+                            </div> */}
                         </div>
                     </div>
                 }
             />
-            
+
         </>
     )
 }

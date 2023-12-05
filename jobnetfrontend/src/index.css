@@ -23,6 +23,13 @@ code {
   height: 100vh;
 }
 
+.main-container {
+  background-color: green;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .register-text{
   color: rgb(6, 149, 201);
 }
@@ -112,30 +119,22 @@ code {
 }
 .loader-div{
   top: 0;
-  width: 100vw;
+  width: 90%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.678);
+  /* background-color: rgba(255, 255, 255, 0.678); */
 }
 /* ------------------modal loader style -----------------*/
 
 /* Loader Styles */
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.158); /* Semi-transparent background */
-  z-index: 9999; /* Ensure it's above other content */
-}
+
 
 .loader img {
   max-width: 15%; /* Adjust the size of your logo as needed */
   max-height: 15%;
   animation: zoom 0.4s alternate infinite, fade 0.8s alternate infinite; /* Zoom and fade animations */
+  background-color: rgb(5, 5, 5);
+  background-color: white;
+  border: 5px solid rgb(0,175,239);
 }
 
 /* Keyframes for Zooming Animation */
@@ -144,7 +143,7 @@ code {
       transform: scale(0.6);
   }
   100% {
-      transform: scale(1.1); /* Adjust the scaling factor for desired zoom level */
+      transform: scale(1.1); 
   }
 }
 
@@ -190,6 +189,12 @@ code {
   color: white;
 }
 
+@media only screen and (max-width: 1025px) {
+  .sidebar {
+    display: none;
+  }
+} 
+
 .search-input{
   width: 15rem;
   padding-left: 2rem;
@@ -208,7 +213,13 @@ code {
   top: 4.7rem;
   position: absolute;
   width: 81.2%;
+}
 
+@media only screen and (max-width: 1025px) {
+  .content-container {
+    left: 0;
+    width: 100%;
+  }
 }
 
 .post-a-job-btn{
@@ -248,8 +259,21 @@ code {
   padding: 3.5rem;
 }
 
+@media only screen and (max-width: 667px) {
+  .cover-banner {
+    padding-top: 5.5rem;
+  }
+}
+
+@media only screen and (max-width: 627px) {
+  .cover-banner {
+    padding-top: 6.5rem;
+  }
+}
+
 .cover-banner h6{
   font-size: 26px;
+  align-self: center;
 }
 
 .new-div{
@@ -323,7 +347,12 @@ button{
 }
 
 .parent-box{
+  display: flex;
   flex-wrap: wrap;
+  gap: 3.61rem;
+  align-items: center;
+  padding: 10px 0;
+  justify-content: center;
 }
 
 .box{
@@ -331,14 +360,40 @@ button{
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   padding: 20px 10px;
   border-radius: 4px;
-  margin-right: 30px;
+  /* margin-right: 30px; */
   margin-bottom: 30px;
-  flex: 1 1 calc(20% - 30px);
+  width: 10.2rem;
+  /* flex: 1 1 calc(20% - 30px); */
   /* flex: 0 0 calc(20% - 20px); */
   /* height: auto; */
   cursor: default;
   transition: 0.3s;
 }
+
+@media only screen and (max-width: 1425px) {
+  .box {
+    width: 12rem;
+  }
+}
+
+@media only screen and (max-width: 1297px) {
+  .box {
+    width: 14rem;
+  }
+}
+
+@media only screen and (max-width: 1103px) {
+  .box {
+    width: 17rem;
+  }
+}
+
+@media only screen and (max-width: 698px) {
+  .box {
+    width: 90%;
+  }
+}
+
 
 .box h1{
   font-size: 38px;
@@ -352,12 +407,12 @@ button{
 }
 
 .profile-view-div{
-  width: 35rem;
+  width: 100%;
 }
 
 .recently-applied-job-div{
-  width: 25rem;
-  margin-left: 2rem;
+  /* width: 25rem; */
+  /* margin-left: 2rem; */
 }
 
 .link{
@@ -423,74 +478,13 @@ button{
   display: none;
 }
 
-@media (max-width: 767px) {
-  .sidebar{
-    display: none;
-  }
 
-  .content-container{
-    left: 0;
-    width: 100%;
-  }
 
-  .inner-content-div{
-    border-radius: 0;
-  }
 
-}
 
-@media (max-width: 991px) {
-  .profile-view-inner-div{
-    display: block;
-  }
 
-  .profile-view-div{
-    width: 100%;
-  }
 
-  .recently-applied-job-div{
-    width: 100%;
-    margin-left: 0;
-    margin-top: 2rem;
-  }
 
-  .box{
-    width: 100%;
-  }
-}
-
-@media (max-width: 1115px) {
-  .profile-view-div{
-    width: 100%;
-  }
-
-  .recently-applied-job-div{
-    width: 100%;
-  }
-
-  .box{
-    /* border-radius: 1rem; */
-    /* width: 10.5rem; */
-  }
-
-  .box h1{
-    font-size: 22px;
-  }
-
-  .box p{
-    font-size: 16px;
-  }
-
-  .content-container{
-    width: 77%;
-  }
-}
-
-@media (max-width: 1080px) {
-  .box{
-    /* width: 9.5rem; */
-  }
-}
 
 
 

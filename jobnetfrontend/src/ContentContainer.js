@@ -6,8 +6,8 @@ function ContentContainer(props) {
     <div>
       <div className='content-container overflow-auto'>
         <div className='cover-banner d-flex align-items-center justify-content-between'>
-          <h6 className='text-white '>{props.pageName}</h6>
-          <div className='text-white d-flex align-items-center'>
+          <h6 className='text-white bg-danger '>{props.pageName}</h6>
+          <div className='text-white bg-warning d-flex align-items-center'>
             <p className='me-2'>Home</p>
             <p className='me-2'>‣</p>
             <p className='me-2'>Dashboard</p>
