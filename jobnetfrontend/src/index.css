@@ -215,9 +215,9 @@ code {
 }
 
 .navbar{
-  /* background-color: white; */
   background-color: rgb(212, 216, 215); 
-  height: 4.7rem;
+  height: 3rem;
+  /* padding: 10px 0; */
 }
 
 .content-container{
@@ -238,7 +238,7 @@ code {
 .post-a-job-btn{
   background-color: rgb(36,64,52);
   color: rgb(0,175,239);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   transition: all 0.3s linear;
 }
@@ -337,7 +337,7 @@ code {
     justify-content: center;
     /* background-color: white; */
     left: -1.5rem;
-    top: 5px;
+    top: -15px;
   }
 
   .search-icon{
@@ -354,7 +354,7 @@ code {
 }
 
 .logo-div{
-  width: 15rem;
+  width: 10rem;
 }
 
 .profile-picture-div{
@@ -420,28 +420,24 @@ button{
   flex-wrap: wrap;
   gap: 3.61rem;
   align-items: center;
-  padding: 10px 0;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .box{
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  padding: 20px 10px;
+  /* padding: 8px 5px; */
   border-radius: 4px;
-  /* margin-right: 30px; */
-  margin-bottom: 30px;
-  width: 10.2rem;
-  /* flex: 1 1 calc(20% - 30px); */
-  /* flex: 0 0 calc(20% - 20px); */
-  /* height: auto; */
+  width: 8rem;
   cursor: default;
   transition: 0.3s;
 }
 
 @media only screen and (max-width: 1425px) {
   .box {
-    width: 12rem;
+    /* width: 12rem; */
+    margin-top: 5px;
   }
 }
 
@@ -463,22 +459,52 @@ button{
   }
 }
 
-@media only screen and (max-width: 698px) {
+@media only screen and (max-width: 811px) {
   .box {
-    width: 90%;
+    width: 15rem;
   }
 }
 
-
-.box h1{
-  font-size: 38px;
+@media only screen and (max-width: 698px) {
+  .box {
+    /* width: 90%; */
+  }
 }
 
+@media only screen and (max-width: 650px) {
+  .box {
+    width: 14rem;
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  .box {
+    width: 12rem;
+  }
+}
+
+@media only screen and (max-width: 555px) {
+  .box {
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 488px) {
+  .box {
+    width: 8rem;
+  }
+}
+
+@media only screen and (max-width: 431px) {
+  .box {
+    width: 6rem;
+  }
+}
 
 .icn-div{
   background-color: rgb(0,175,239);
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .profile-view-div{

@@ -26,7 +26,7 @@ function EmployerDashboard() {
             <NavBar
                 PostJobBtn={
                     <Link to={"/postJob"}>
-                        <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
+                        <button className="post-a-job-btn py-1 px-2 rounded-pill">Post a Job</button>
                     </Link>}
             />
             <Banner />
@@ -39,23 +39,23 @@ function EmployerDashboard() {
                 pageName="Dashboard"
                 employerDashboard={
                     <div>
-                        <div className='parent-box'>
-                            <div className='box bg-white mb-2'>
+                        <div className='parent-box bg-danger'>
+                            <div className='box bg-white'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
                                             <div className='icn-div d-flex align-items-center justify-content-center rounded-circle'>
-                                                <i class="bi bi-pencil-square fs-4"></i>
+                                                <i class="bi bi-pencil-square fs-5"></i>
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h1 className='mb-0'>1502</h1>
+                                            <h4 className='mb-0'>1502</h4>
                                             <h6 className='text-center text-muted'>Total Visitor</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box bg-white mb-2'>
+                            <div className='box bg-white'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
@@ -64,13 +64,13 @@ function EmployerDashboard() {
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h1 className='mb-0'>1502</h1>
+                                            <h4 className='mb-0'>1502</h4>
                                             <h6 className='text-center text-muted'>Posted Jobs</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box bg-white mb-2'>
+                            <div className='box bg-white'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
@@ -79,13 +79,13 @@ function EmployerDashboard() {
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h1 className='mb-0'>1502</h1>
+                                            <h4 className='mb-0'>1502</h4>
                                             <h6 className='text-center text-muted'>Applied Jobs</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box bg-white mb-2'>
+                            <div className='box bg-white'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
@@ -94,13 +94,13 @@ function EmployerDashboard() {
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h1 className='mb-0'>1502</h1>
+                                            <h4 className='mb-0'>1502</h4>
                                             <h6 className='text-center text-muted'>Views</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='box bg-white mb-2'>
+                            <div className='box bg-white'>
                                 <div className='d-flex align-items-center justify-content-center'>
                                     <div className='w-100 mx-auto'>
                                         <div className='mb-3 d-flex align-items-center justify-content-center w-100'>
@@ -109,7 +109,7 @@ function EmployerDashboard() {
                                             </div>
                                         </div>
                                         <div className='text-center w-100 box-text'>
-                                            <h1 className='mb-0'>1502</h1>
+                                            <h4 className='mb-0'>1502</h4>
                                             <h6 className='text-center text-muted'>Favourite Jobs</h6>
                                         </div>
                                     </div>

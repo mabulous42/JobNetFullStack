@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function NavBar(props) {
     return (
         <>
-            <div className='navbar fixed-top py-3'>
+            <div className='navbar py-1 fixed-top'>
                 <div className='w-100 d-flex align-items-center justify-content-between'>
                     <Link to={"/employerDashboard"}>
                         <div className='logo-div mx-auto text-center'>
@@ -14,13 +14,13 @@ function NavBar(props) {
                     <div>
                         <p>{props.userName}</p>
                     </div>
-                    <div className='d-flex'>
+                    <div className='d-flex align-items-center justify-content-center'>
                         <div className='position-relative me-3 d-flex align-items-center justify-content-center'>
-                            <input className='search-input rounded-pill py-2' placeholder='Search here...' type="text" name="" id="" />
+                            <input className='search-input rounded-pill py-1' placeholder='Search here...' type="text" name="" id="" />
                             <div className='position-absolute search-icon-div'><i className="bi bi-search search-icon"></i></div>
                         </div>
                         <div className='me-3 mt-1'>
-                            <i class="bi bi-bell fs-3"></i>
+                            <i class="bi bi-bell fs-4"></i>
                         </div>
                         <div className='me-3 post-job-btn'>
                             {props.PostJobBtn}
